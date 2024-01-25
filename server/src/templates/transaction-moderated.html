@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>Transaction Moderation Email</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				margin: 0;
+				padding: 0;
+				background-color: #f4f4f4;
+			}
+
+			.container {
+				max-width: 600px;
+				margin: 20px auto;
+				padding: 20px;
+				background-color: #fff;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			}
+
+			h2 {
+				color: #333;
+			}
+
+			p {
+				color: #666;
+			}
+
+			.verification-link {
+				background-color: #17a2b8;
+				color: white;
+				text-decoration: none;
+				padding: 15px 20px;
+				display: inline-block;
+				border-radius: 5px;
+				margin-top: 20px;
+				font-weight: bold;
+				font-size: 14px;
+			}
+
+			.verification-link:hover {
+				opacity: 0.7;
+			}
+      
+      table {
+        border-collapse: collapse;
+        width:70%;
+      }
+      .details__header{
+        font-weight: bold;
+        font-size: 18px;
+        text-transform: uppercase;
+        margin-bottom: 3px;
+      }
+      th{
+        text-transform: uppercase;
+        font-weight: bold;
+
+      }
+      tr , td , th {
+        border : 1px solid black;
+        text-align: left;
+        padding : 10px;
+        font-size: 14px;
+      }
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h2> Your Transaction Has Been Moderated</h2>
+			<p>Hello {{username}},</p>
+
+			<p>Your transaction with id , {{txnId}} has been {{status}}</p>
+
+			<p class="details__header">Transaction Details</p>
+			<table >
+				<tr>
+					<th>Transaction ID</th>
+					<td>{{txnId}}</td>
+				</tr>
+				<tr>
+          <tr>
+					<th>Amount</th>
+					<td>{{amount}}</td>
+				</tr>
+					<th>Transaction Type</th>
+					<td>{{type}}</td>
+				</tr>
+				<tr>
+					<th>Transaction Date</th>
+					<td>{{date}}</td>
+				</tr>
+			</table>
+
+			<p>If you have any questions regarding this decision, feel free to contact our support team at support@octachase.com with the transactionId - {{txnId}} as topic</p>
+
+			<p>Thank you for choosing Octachase. We look forward to serving you!</p>
+			<p>
+				Best regards,<br />
+				Octachase Team<br />
+			</p>
+		</div>
+	</body>
+</html>

@@ -18,14 +18,14 @@ export function getCookie(name: string) {
 }
 
 export function createAuthorizationHeader(headers: any) {
-  const token = getCookie('login'); if (token) {
-    // Convert headers to Headers object if needed
-    const headersInstance = new Headers(headers);
+  const token = getCookie('login');
+  // Convert headers to Headers object if needed
+  const headersInstance = new Headers(headers);
+  headersInstance.set("domain", process.env.NEXT_PUBLIC_API_URL as string)
+  if (token) {
     headersInstance.set('Authorization', `Bearer ${token}`);
-    headersInstance.set("domain", process.env.NEXT_PUBLIC_API_URL as string)
-    return headersInstance;
   }
-  return headers;
+  return headersInstance;
 }
 
 export function deleteCookie(name: string) {

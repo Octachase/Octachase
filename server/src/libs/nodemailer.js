@@ -9,7 +9,7 @@ const replaceKeys = require("../utils/replaceKeys");
 const sendEmail = async (to, subject, body, attachments = undefined) => {
 	const transport = nodemailer.createTransport(
 		smtpTransport({
-			service: "Gmail",
+			// service: "Gmail",
 			host: process.env.SMTP_HOST,
 			port: 465,
 			secure: true,

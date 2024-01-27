@@ -12,7 +12,7 @@ interface IButton {
 	disabled?: boolean;
 }
 const PrimaryButton = ({ text, sx = "", type = "button", isLoading = false, disabled = false, handleClick, href }: IButton) => {
-	const styles = `${sx} bg-sec text-white font-bold min-w-[200px] flex items-center justify-center py-4 px-8 ${isLoading || disabled ? "opacity-60" : "hover:opacity-70"} `;
+	const styles = `${sx} bg-sec text-white font-bold min-h-6 min-w-[200px] flex items-center justify-center py-4 px-8 ${isLoading || disabled ? "opacity-60" : "hover:opacity-70"} `;
 	return (
 		<>
 			{!href && (

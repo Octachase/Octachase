@@ -81,38 +81,24 @@ const page = () => {
 
 						{/* Coin Prices */}
 						<div className="w-full flex flex-col lg:flex-row items-center justify-between gap-6 h-auto  mt-4">
-							<div className="w-full h-32  overflow-hidden rounded-[5px] bg-[#1e222d] ">
-								<iframe
-									src="https://widget.coinlib.io/widget?type=chart&amp;theme=dark&amp;coin_id=859&amp;pref_coin_id=1505"
-									width="100%"
-									height="100%"
-									sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
-									className="w-full"></iframe>
+							<div className="w-full h-32rounded-[5px] bg-[#1e222d] ">
+								<iframe src="https://widget.coinlib.io/widget?type=chart&amp;theme=dark&amp;coin_id=859&amp;pref_coin_id=1505"></iframe>
 							</div>
-							<div className="w-full h-32  overflow-hidden rounded-[5px] bg-[#1e222d] ">
-								<iframe
-									src="https://widget.coinlib.io/widget?type=chart&amp;theme=dark&amp;coin_id=145&amp;pref_coin_id=1505"
-									width="100%"
-									height="100%"
-									className="w-full"
-									sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
+							<div className="w-full h-32 rounded-[5px] bg-[#1e222d] ">
+								<iframe src="https://widget.coinlib.io/widget?type=chart&amp;theme=dark&amp;coin_id=145&amp;pref_coin_id=1505"></iframe>
 							</div>
-							<div className="w-full h-32  overflow-hidden rounded-[5px] bg-[#1e222d] ">
-								<iframe
-									src="https://widget.coinlib.io/widget?type=chart&amp;theme=dark&amp;coin_id=359&amp;pref_coin_id=1505"
-									className="w-full"
-									height="100%"
-									sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
+							<div className="w-full h-32 rounded-[5px] bg-[#1e222d] ">
+								<iframe src="https://widget.coinlib.io/widget?type=chart&amp;theme=dark&amp;coin_id=359&amp;pref_coin_id=1505"></iframe>
 							</div>
 						</div>
 
 						{/* Graphs */}
 						<section className="flex flex-col lg:flex-row items-stretch justify-between mt-6 gap-6">
-							<article className=" rounded-[5px] overflow-hidden w-full lg:w-[30%] h-[54vh] lg:h-[66vh] bg-[#171B26]">
+							<article className=" rounded-[5px]w-full lg:w-[30%] h-[54vh] lg:h-[66vh] bg-[#171B26]">
 								<iframe src="https://widget.coinlib.io/widget?type=full_v2&amp;theme=dark&amp;cnt=6&amp;pref_coin_id=1505&amp;graph=yes" height="100%" width="100%"></iframe>
 							</article>
-							<article className="rounded-[5px] overflow-hidden overflow-x-scroll lg:overflow-x-hidden w-full lg:w-[70%] h-[45vh] lg:h-[66vh] bg-[#171B26]">
-								<div className="w-[150%] lg:w-full h-full">
+							<article className="rounded-[5px] overflow-x-scroll lg:overflow-x-hidden w-full lg:w-[70%] h-[45vh] lg:h-[66vh] bg-[#171B26]">
+								<div className="w-[150%]  lg:w-full h-full">
 									<iframe
 										height="100%"
 										width="100%"

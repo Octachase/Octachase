@@ -17,7 +17,7 @@ const AccountInformation = ({ setShowInformation }: { setShowInformation: React.
 	const user = useSelector(useUserSlice);
 	const logoutUser = useLogout();
 	return (
-		<aside className="h-screen w-full lg:w-[25%] fixed top-0 right-0 bg-[#4A4445] shadow-2xl z-[4]">
+		<aside className="h-screen w-full md:w-1/2 lg:w-[25%] fixed top-0 right-0 bg-[#4A4445] shadow-2xl z-[4]">
 			<div className="flex items-center justify-between p-4 bg-[#424764]">
 				<p className="uppercase font-bold">Information</p>
 				<button className="group hover:bg-slate-800 p-[5px] rounded-full" onClick={() => setShowInformation(false)}>
@@ -38,7 +38,7 @@ const AccountInformation = ({ setShowInformation }: { setShowInformation: React.
 					<p className="opacity-40 mt-2 text-sm">Joined -{createDateFromString(user?.createdAt)}</p>
 				</div>
 
-				<nav className="flex flex-col justify-center items-center w-[90%]">
+				<nav className="flex flex-col justify-center mx-auto items-center w-[90%]">
 					<Link className="w-full px-2 flex items-center justify-start gap-2 text-sm opacity-40  py-3 border-y-[1px] hover:bg-[#5A5557]" href="/dashboard/profile">
 						<MdEdit className="text-lg" />
 						Edit Profile

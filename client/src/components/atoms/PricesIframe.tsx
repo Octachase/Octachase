@@ -2,7 +2,7 @@ import React from "react";
 
 const PricesIframe = ({ sx = "" }: { sx?: string }) => {
 	return (
-		<div className={`w-full px-2 ${sx}`}>
+		<div className={`w-full mx-auto px-2 ${sx}`}>
 			<div className="tradingview-widget-container bg-[#1e222d] h-20 overflow-y-hidden">
 				<iframe
 					className="w-full"

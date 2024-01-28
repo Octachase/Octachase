@@ -6,7 +6,7 @@ const HowTo = () => {
 			<p className="text-sm mb-4">Kindly request the payment method that's best for you</p>
 
 			<div className="flex flex-col justify-center items-center mt-2">
-				<a href="https://xcoins.com/en/" className="block bg-[#3b4863] border-[1px] border-[#3b4863] text-sm px-4 py-2 " rel="noreferrer" target="_blank">
+				<a href="https://crypto.com" className="block bg-[#3b4863] border-[1px] border-[#3b4863] text-sm px-4 py-2 " rel="noreferrer" target="_blank">
 					Click here if you're in the United States to buy bitcoins with your credit card.
 				</a>
 

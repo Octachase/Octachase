@@ -107,7 +107,7 @@ const page = () => {
 						</div>
 
 						{/* Coin Prices */}
-						<div className="w-full flex flex-col lg:flex-row items-center justify-between gap-6 h-auto  mt-4">
+						<div className="w-full  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  items-center justify-between gap-6 h-auto  mt-4">
 							<div className="w-full h-32  overflow-hidden rounded-[5px] bg-[#1e222d] ">
 								<iframe
 									src="https://widget.coinlib.io/widget?type=chart&amp;theme=dark&amp;coin_id=859&amp;pref_coin_id=1505"

@@ -30,7 +30,7 @@ const Navbar = () => {
 			<aside
 				className={`${
 					showMenu ? "flex" : "hidden"
-				} fixed top-0 left-0  z-[5] lg:relative p-6 w-full bg-black lg:bg-transparent lg:w-[65%] lg:flex flex-col lg:flex-row h-screen lg:h-auto lg:justify-between lg:items-center`}>
+				} fixed top-0 left-0 md:w-2/3  z-[5] lg:relative p-6 w-full bg-black lg:bg-transparent lg:w-[65%] lg:flex flex-col lg:flex-row h-screen lg:h-auto lg:justify-between lg:items-center`}>
 				<div className="flex h-10 justify-end lg:hidden mb-6">
 					<button className="flex items-center justify-center" onClick={() => setShowMenu(false)}>
 						<IoClose className="text-4xl" />

@@ -40,7 +40,7 @@ const AccountType = ({ name, percentage, min, max }: { min: number; max: number;
 				<input type="range" name="amount" value={value} id="amount" min={min} max={max} className="range pr-6 accent-sec" onChange={(e) => setValue(+e.target.value)} />
 
 				{/* <ProgressBar /> */}
-				<PrimaryButton text={!user?._id ? "Sign up" : "Trade"} href={!user?._id ? "/signup" : "/dashboard/trades/new"} sx="rounded-[5px] bg-[#52AFEE] !py-3" />
+				{!user.isAdmin && <PrimaryButton text={!user?._id ? "Sign up" : "Trade"} href={!user?._id ? "/signup" : "/dashboard/trades/new"} sx="rounded-[5px] bg-[#52AFEE] !py-3" />}
 			</div>
 		</div>
 	);

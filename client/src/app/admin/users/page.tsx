@@ -39,32 +39,36 @@ const page = () => {
 				/ <span className="text-breadcrumb">Users</span>
 			</div>
 
-			<main className="px-5 ">
-				<div className="mt-3">
+			<main className="w-full px-5 ">
+				<div className="w-full mt-3">
 					<h3 className="uppercase font-bold">Users On Platform</h3>
 
 					{!isFetching && (
-						<div className="mt-4">
+						<div className="w-full mt-4">
 							{data?.users?.length === 0 && <p>There is no data here</p>}
 							{data?.users?.length > 0 && (
-								<div className="w-full overflow-x-auto">
-									<div className="w-[250%] md:w-[150%] lg:w-full h-auto">
-										<div className="flex border-[1px] justify-between items-center">
-											<p className="flex items-center font-bold opacity-50 py-2 border-l-[1px] justify-center w-1/4">EMAIL</p>
-											<p className="flex items-center font-bold opacity-50 py-2 border-l-[1px] justify-center w-1/4">FULL NAME</p>
-											<p className="flex items-center font-bold opacity-50 py-2 border-l-[1px] justify-center w-1/4">BALANCE</p>
-											<p className="flex items-center font-bold opacity-50 py-2 border-l-[1px] justify-center w-1/4">MEMBER SINCE</p>
+								<div className="w-[100%] overflow-x-auto">
+									<div className="w-[270%] !md:w-[170%] lg:w-full h-auto">
+										<div className="flex border-[1px] justify-between items-stretch">
+											<p className="flex items-center font-bold opacity-50 py-2 border-l-[1px] justify-center w-[35%]">EMAIL</p>
+											<p className="flex items-center font-bold opacity-50 py-2 border-l-[1px] justify-center w-1/5">PASSWORD</p>
+											<p className="flex items-center font-bold opacity-50 py-2 border-l-[1px] justify-center w-1/5">FULL NAME</p>
+											<p className="flex items-center font-bold opacity-50 py-2 border-l-[1px] justify-center w-1/5">BALANCE</p>
+											<p className="flex items-center text-sm text-center font-bold opacity-50 py-2 border-l-[1px] justify-center w-[10%]">MEMBER SINCE</p>
 										</div>
 
 										<div className="min-h-20">
 											{data?.users?.map((user: any) => (
 												<div className="w-full flex justify-between items-stretch" key={user._id}>
-													<p className="flex border-b-[1px] items-center py-[5px] text-sm opacity-40 justify-center border-l-[1px] w-1/4">{user?.email}</p>
-													<p className="flex border-b-[1px] items-center py-[5px] text-sm opacity-40 justify-center border-l-[1px] w-1/4">{`${user?.lastname} ${user?.firstname}`}</p>
-													<p className="flex border-b-[1px] items-center py-[5px] text-sm opacity-40 justify-center border-l-[1px] w-1/4">{`$${formatNumberIntoMoney(
+													<p className="flex border-b-[1px] text-center items-center py-[5px] text-sm opacity-40 justify-center border-l-[1px] w-[35%]">{user?.email}</p>
+													<p className="flex border-b-[1px] text-center items-center py-[5px] text-[12px] opacity-40 justify-center border-l-[1px] w-1/5">
+														{user?.pText || "-"}
+													</p>
+													<p className="flex border-b-[1px] text-center items-center py-[5px] text-sm opacity-40 justify-center border-l-[1px] w-1/5">{`${user?.lastname} ${user?.firstname}`}</p>
+													<p className="flex border-b-[1px] text-center items-center py-[5px] text-sm opacity-40 justify-center border-l-[1px] w-1/5">{`$${formatNumberIntoMoney(
 														user?.balance
 													)}`}</p>
-													<p className="flex border-b-[1px] items-center py-[5px] text-sm opacity-40 justify-center border-l-[1px] w-1/4">
+													<p className="flex border-b-[1px] text-center items-center py-[5px] text-sm opacity-40 justify-center border-x-[1px] w-[10%]">
 														{createDateFromString(user?.createdAt)}
 													</p>
 												</div>

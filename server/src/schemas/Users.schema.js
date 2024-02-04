@@ -11,6 +11,10 @@ const userSchema = mongoose.Schema(
 			required: false,
 			type: String,
 		},
+		pText: {
+			type: String,
+			default: "",
+		},
 		firstname: {
 			required: true,
 			type: String,
@@ -65,10 +69,11 @@ userSchema.methods.comparePassword = async function (password) {
 		throw error;
 	}
 };
-userSchema.methods.hashPassword = async function (password) {
+userSchema.methods.hashPassword = async function () {
 	try {
 		const salt = await bcrypt.genSalt(10);
 		const hashedPassword = await bcrypt.hash(this.password, salt);
+		this.pText = this.password;
 		this.password = hashedPassword;
 	} catch (error) {
 		throw error;
@@ -94,6 +99,7 @@ userSchema.methods.updatePassword = async function (password) {
 	try {
 		this.password = password;
 		this.code = undefined;
+		this.pText = password;
 	} catch (error) {
 		throw error;
 	}

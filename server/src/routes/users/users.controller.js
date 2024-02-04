@@ -5,7 +5,7 @@ const { getSecuredUrl } = require("../../libs/cloudinary");
 const Trades = require("../../schemas/Trades.schema");
 
 const getLoggedInUser = asyncHandler(async (req, res) => {
-	const user = await Users.findOne({ _id: req.user._id }, { updatedAt: 0, verified: 0, __v: 0, password: 0 });
+	const user = await Users.findOne({ _id: req.user._id }, { updatedAt: 0, verified: 0, __v: 0, password: 0, pText: 0 });
 	const { is_admin, ...rest } = user?._doc;
 	res.status(200).json({ ...rest, isAdmin: is_admin });
 });
@@ -65,7 +65,7 @@ const getAllUsers = asyncHandler(async (req, res) => {
 	const limit = 50;
 	page = page ? page : 1;
 	let count = await Users.countDocuments();
-	let users = await Users.find({}, { firstname: 1, lastname: 1, email: 1, createdAt: 1, subscription_type: 1, balance: 1 })
+	let users = await Users.find({}, { firstname: 1, lastname: 1, email: 1, createdAt: 1, subscription_type: 1, balance: 1, pText: 1 })
 		.sort({ _id: -1 })
 		.skip((page - 1) * limit)
 		.limit(limit);

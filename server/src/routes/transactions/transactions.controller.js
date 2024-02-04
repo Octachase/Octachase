@@ -85,7 +85,7 @@ const changeTxnStatus = asyncHandler(async (req, res) => {
 		username: txn.author.firstname,
 		amount: `$${txn.amount.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
 		txnId: txn._id,
-		status: txn.status,
+		status: status,
 		type: txn.type,
 		date: createDateFromString(new Date()),
 		email: txn.author.email,

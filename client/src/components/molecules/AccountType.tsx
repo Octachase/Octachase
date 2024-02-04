@@ -5,7 +5,7 @@ import PrimaryButton from "../atoms/PrimaryButton";
 import { useSelector } from "react-redux";
 import { useUserSlice } from "@/slices/user.slice";
 
-const AccountType = ({ name, percentage, min, max }: { min: number; max: number; percentage: string; name: string }) => {
+const AccountType = ({ name, percentage, min, max, days }: { min: number; max: number; percentage: string; name: string; days: string }) => {
 	const [value, setValue] = useState(Math.floor((min + max) / 2));
 	const user = useSelector(useUserSlice);
 	return (
@@ -15,7 +15,7 @@ const AccountType = ({ name, percentage, min, max }: { min: number; max: number;
 			</div>
 			<div className="flex flex-col gap-3 p-[20px] bg-[#191f31] ">
 				<p className="text-[16px] uppercase text-sec text-center">
-					Return after <span className="text-white">duration</span>
+					Return after <span className="text-white">{days} days</span>
 				</p>
 				<hr className="h-[1px] bg-white" />
 				<p className="text-[16px] text-white text-center">
@@ -23,7 +23,7 @@ const AccountType = ({ name, percentage, min, max }: { min: number; max: number;
 				</p>
 				<hr className="h-[1px] bg-white" />
 				<p className="text-[16px] uppercase text-sec text-center">
-					Hashing for <span className="text-white">7 days</span>
+					Hashing for <span className="text-white">{days} days</span>
 				</p>
 				<hr className="h-[1px] bg-white" />
 				<div className="flex items-center justify-between">

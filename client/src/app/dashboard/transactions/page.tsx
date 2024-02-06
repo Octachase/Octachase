@@ -52,6 +52,9 @@ const page = () => {
 							<option className="bg-transparent text-sm text-black" value="withdrawal">
 								Withdrawals
 							</option>
+							<option className="bg-transparent text-sm text-black" value="profit">
+								Profits
+							</option>
 						</select>
 					</div>
 

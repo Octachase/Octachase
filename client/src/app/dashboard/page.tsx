@@ -15,7 +15,8 @@ import { FaMoneyBill } from "react-icons/fa";
 
 const page = () => {
 	const { data, isLoading } = useGetUserMetricsQuery();
-	const { user } = useSelector(useUserSlice);
+	const user = useSelector(useUserSlice);
+
 	return (
 		<Mainpage>
 			{/* Breadcrumb */}
@@ -36,8 +37,8 @@ const page = () => {
 						<div className="grid grid-cols-1 lg:grid-cols-4 items-center justify-between h-auto lg:h-24 gap-4 mt-4">
 							<div className="flex w-full h-full items-center justify-between bg-[#17A2B8] p-6 rounded-[5px]">
 								<div>
-									<h3 className="text-sm font-bold uppercase">Profit</h3>
-									<p className="text-xl lg:text-2xl mt-[3px] font-semibold">${formatNumberIntoMoney(user?.profit as number)}</p>
+									<h3 className="text-sm font-bold uppercase">Total Deposits</h3>
+									<p className="text-xl lg:text-2xl mt-[3px] font-semibold">${formatNumberIntoMoney(data?.deposits as number)}</p>
 								</div>
 								<div>
 									<FaMoneyBill className="text-4xl" />
@@ -45,8 +46,8 @@ const page = () => {
 							</div>
 							<div className="flex w-full h-full items-center justify-between bg-[#17A2B8] p-6 rounded-[5px]">
 								<div>
-									<h3 className="text-sm font-bold uppercase">Total Deposits</h3>
-									<p className="text-xl lg:text-2xl mt-[3px] font-semibold">${formatNumberIntoMoney(data?.deposits as number)}</p>
+									<h3 className="text-sm font-bold uppercase">Profit</h3>
+									<p className="text-xl lg:text-2xl mt-[3px] font-semibold">${formatNumberIntoMoney(user?.profit as number)}</p>
 								</div>
 								<div>
 									<FaMoneyBill className="text-4xl" />

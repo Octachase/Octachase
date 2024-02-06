@@ -147,7 +147,7 @@ const listPendingTxns = asyncHandler(async (req, res) => {
 const listUserTransactions = asyncHandler(async (req, res) => {
 	let { type, page } = req.query;
 	const limit = 50;
-	type = type ? (["withdrawal", "deposit"].includes(type.toLowerCase()) ? type : "") : "";
+	type = type ? (["withdrawal", "deposit", "profit"].includes(type.toLowerCase()) ? type : "") : "";
 	page = page ? page : 1;
 	const filt = type ? { author: req.user._id, type } : { author: req.user._id };
 	const count = await Transactions.countDocuments(filt);
@@ -161,10 +161,10 @@ const listUserTransactions = asyncHandler(async (req, res) => {
 const listAllTransactions = asyncHandler(async (req, res) => {
 	let { type } = req.query;
 	const limit = 100;
-	type = type ? (["withdrawal", "deposit"].includes(type.toLowerCase()) ? type : "") : "";
+	type = type ? (["withdrawal", "deposit", "profit"].includes(type.toLowerCase()) ? type : "") : "";
 
 	const filt = type ? { type } : {};
-	const txns = await Transactions.find(filt).sort({ _id: -1 }).limit(limit);
+	const txns = await Transactions.find(filt).sort({ _id: -1 }).populate("author", "email").limit(limit);
 	res.status(200).json(txns);
 });
 

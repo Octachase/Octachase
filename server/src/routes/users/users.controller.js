@@ -105,6 +105,8 @@ const addProfitToUser = asyncHandler(async (req, res) => {
 	// Send email to tell user they received a profit
 	await notifyUserOfProfit({ username: account.firstname, amount: "$" + +amount.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 }), email: account.email });
 
+	// Add a transaction to track profit
+	await Transactions.create({ author: account._id, amount, type: "profit", status: "approved" });
 	// Store profit
 	await Users.updateOne({ _id: user }, { $inc: { profit: +amount } });
 

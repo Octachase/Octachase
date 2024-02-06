@@ -17,7 +17,7 @@ const transactionsSchema = mongoose.Schema(
 		},
 		type: {
 			type: String,
-			// Can be withdrawal or deposit
+			// Can be withdrawal  deposit
 		},
 		// Required in all withdrawals but not deposits
 		details: {},

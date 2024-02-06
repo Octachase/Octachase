@@ -26,7 +26,7 @@ const Bitcoin = () => {
 	useEffect(() => {
 		if (!data) return;
 		toast.success(data?.message, { autoClose: 1500 });
-		dispatch(setData({ balance: user.balance - getValues().amount }));
+		dispatch(setData({ profit: user.profit - getValues().amount }));
 		setTimeout(() => {
 			router.push("/dashboard/transactions");
 		}, 1000);

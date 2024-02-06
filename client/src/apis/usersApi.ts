@@ -49,6 +49,18 @@ const userApi = createApi({
         url: `/get-users?page=${page}`,
       }),
     }),
+    fetchAllUsersNoPagesRequest: builder.query<any, void>({
+      query: () => ({
+        url: `/get-users-no-pages`,
+      }),
+    }),
+    addProfitToUserRequest: builder.mutation<{ success: boolean }, { amount: number; user: string }>({
+      query: ({ amount, user }) => ({
+        url: '/add-profit',
+        method: 'PUT',
+        body: { amount, user }
+      })
+    })
 
   })
 })
@@ -59,6 +71,9 @@ export const {
   useGetUserMetricsQuery,
   useUpdateUserProfileImageRequestMutation,
   useLazyFetchAllUsersRequestQuery,
-  useGetAdminMetricsQuery
+  useFetchAllUsersRequestQuery,
+  useGetAdminMetricsQuery,
+  useFetchAllUsersNoPagesRequestQuery,
+  useAddProfitToUserRequestMutation
 } = userApi
 export default userApi

@@ -66,7 +66,7 @@ const page = () => {
 													</p>
 													<p className="flex border-b-[1px] text-center items-center py-[5px] text-sm opacity-40 justify-center border-l-[1px] w-1/5">{`${user?.lastname} ${user?.firstname}`}</p>
 													<p className="flex border-b-[1px] text-center items-center py-[5px] text-sm opacity-40 justify-center border-l-[1px] w-1/5">{`$${formatNumberIntoMoney(
-														user?.balance
+														user?.profit
 													)}`}</p>
 													<p className="flex border-b-[1px] text-center items-center py-[5px] text-sm opacity-40 justify-center border-x-[1px] w-[10%]">
 														{createDateFromString(user?.createdAt)}

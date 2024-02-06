@@ -4,7 +4,7 @@ type userSliceType = {
   email: string,
   firstname: string,
   lastname: string,
-  balance: number,
+  profit: number,
   _id: string,
   is_admin: boolean,
   createdAt: string,
@@ -15,7 +15,7 @@ const initialState: userSliceType = {
   email: '',
   firstname: '',
   lastname: '',
-  balance: 0.00,
+  profit: 0.00,
   _id: '',
   is_admin: false,
   createdAt: '',
@@ -31,11 +31,6 @@ const userSlice = createSlice({
     logout: () => {
       return initialState
     },
-    setBalance: (state, action) => {
-      state.balance = action.payload
-    },
-
-
   }
 })
 

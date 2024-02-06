@@ -40,7 +40,7 @@ const userSchema = mongoose.Schema(
 			immutable: true,
 			default: false,
 		},
-		balance: {
+		profit: {
 			type: Number,
 			default: 0,
 		},

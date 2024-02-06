@@ -59,15 +59,6 @@ const Navbar = () => {
 								CONTACTS
 							</Link>
 						</li>
-						{user?._id && (
-							<li>
-								<Link
-									href={`/${user?.isAdmin ? "admin" : "dashboard"}/trades`}
-									className={`block p-[8px] mb-4 lg:mb-0 ${pathname === "/dashboard/trade" ? "text-sec" : "hover:text-sec"} font-bold`}>
-									TRADES
-								</Link>
-							</li>
-						)}
 					</ul>
 				</nav>
 				<div className="w-full flex  items-center justify-between lg:w-auto mt-6 lg:mt-0">

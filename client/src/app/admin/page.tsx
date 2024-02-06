@@ -11,7 +11,6 @@ import PricesIframe from "@/components/atoms/PricesIframe";
 import Loading from "@/components/atoms/Loading";
 
 import { FaMoneyBill } from "react-icons/fa";
-import { VscGraphLine } from "react-icons/vsc";
 import { RiLuggageDepositFill } from "react-icons/ri";
 import { BiMoneyWithdraw } from "react-icons/bi";
 import { FaUsers } from "react-icons/fa";
@@ -35,44 +34,6 @@ const page = () => {
 			<>
 				{!isLoading && (
 					<main className="px-5">
-						<div className="grid grid-cols-1 lg:grid-cols-4 items-center justify-between h-auto lg:h-24 gap-4 mt-4">
-							<div className="flex w-full h-full items-center justify-between bg-[#5965F9] p-6 rounded-[5px]">
-								<div>
-									<h3 className="text-sm font-bold">Trades Count</h3>
-									<p className="text-xl lg:text-2xl mt-[3px] uppercase font-semibold">{data?.trades} </p>
-								</div>
-								<div>
-									<VscGraphLine className="text-2xl" />
-								</div>
-							</div>
-							<div className="flex w-full h-full items-center justify-between bg-[#17A2B8] p-6 rounded-[5px]">
-								<div>
-									<h3 className="text-sm font-bold uppercase">Pending Deposits</h3>
-									<p className="text-xl lg:text-2xl mt-[3px] font-semibold">{data?.pendingDeposits as number}</p>
-								</div>
-								<div>
-									<RiLuggageDepositFill className="text-2xl" />
-								</div>
-							</div>
-							<div className="flex w-full h-full items-center justify-between bg-[#17A2B8] p-6 rounded-[5px]">
-								<div>
-									<h3 className="text-sm lg:text-[12px]  font-bold uppercase">Withdrawal Requests</h3>
-									<p className="text-xl lg:text-2xl mt-[3px] font-semibold">{data?.pendingWithdrawals as number}</p>
-								</div>
-								<div>
-									<BiMoneyWithdraw className="text-2xl" />
-								</div>
-							</div>
-							<div className="flex w-full h-full items-center justify-between bg-[#17A2B8] p-6 rounded-[5px]">
-								<div className="">
-									<h3 className="text-sm font-bold uppercase">Users Count</h3>
-									<p className="text-xl lg:text-2xl mt-[3px] font-semibold">{data?.totalUsers as number}</p>
-								</div>
-								<div>
-									<FaUsers className="text-2xl" />
-								</div>
-							</div>
-						</div>
 						<div className="grid grid-cols-1 lg:grid-cols-4 items-center justify-between h-auto lg:h-24 gap-4 my-4 lg:my-10">
 							<div className="flex w-full h-full items-center justify-between bg-[#17A2B8] p-6 rounded-[5px]">
 								<div>
@@ -86,7 +47,7 @@ const page = () => {
 							</div>
 							<div className="flex w-full h-full items-center justify-between bg-[#17A2B8] p-6 rounded-[5px]">
 								<div className="">
-									<h3 className="text-sm font-bold uppercase">Withdrawals</h3>
+									<h3 className="text-sm font-bold uppercase">Total Withdrawals</h3>
 									<p className="text-xl lg:text-2xl mt-[3px] font-semibold">${formatNumberIntoMoney(data?.totalWithdrawals as number)}</p>
 								</div>
 								<div>
@@ -95,13 +56,20 @@ const page = () => {
 							</div>
 							<div className="flex w-full h-full items-center justify-between bg-[#17A2B8] p-6 rounded-[5px]">
 								<div>
-									<h3 className="text-sm font-bold uppercase">Profit</h3>
-									<p className="text-xl lg:text-2xl mt-[3px] font-semibold">
-										${formatNumberIntoMoney((data?.totalDeposits - data?.totalWithdrawals < 0 ? 0 : data?.totalDeposits - data?.totalWithdrawals) as number)}
-									</p>
+									<h3 className="text-sm font-bold uppercase">Total Profits</h3>
+									<p className="text-xl lg:text-2xl mt-[3px] font-semibold">${formatNumberIntoMoney(data?.profits as number)}</p>
 								</div>
 								<div>
 									<FaMoneyBill className="text-2xl" />
+								</div>
+							</div>
+							<div className="flex w-full h-full items-center justify-between bg-[#17A2B8] p-6 rounded-[5px]">
+								<div>
+									<h3 className="text-sm font-bold uppercase">Total Users</h3>
+									<p className="text-xl lg:text-2xl mt-[3px] font-semibold">{(data?.totalUsers < 10 ? "0" : "") + data?.totalUsers}</p>
+								</div>
+								<div>
+									<FaUsers className="text-2xl" />
 								</div>
 							</div>
 						</div>
@@ -114,7 +82,7 @@ const page = () => {
 									width="100%"
 									height="500px"
 									sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
-									className="w-full overflow-hidden"></iframe>
+									className="w-full !overflow-hidden"></iframe>
 							</div>
 							<div className="w-full h-32  overflow-hidden rounded-[5px] bg-[#1e222d] ">
 								<iframe
@@ -132,6 +100,21 @@ const page = () => {
 									sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
 							</div>
 						</div>
+
+						{/* Graphs */}
+						<section className="flex flex-col lg:flex-row items-stretch justify-between mt-6 gap-6">
+							<article className=" rounded-[5px]w-full lg:w-[30%] h-[54vh] lg:h-[66vh] bg-[#171B26]">
+								<iframe src="https://widget.coinlib.io/widget?type=full_v2&amp;theme=dark&amp;cnt=6&amp;pref_coin_id=1505&amp;graph=yes" height="100%" width="100%"></iframe>
+							</article>
+							<article className="rounded-[5px] overflow-x-scroll lg:overflow-x-hidden w-full lg:w-[70%] h-[45vh] lg:h-[66vh] bg-[#171B26]">
+								<div className="w-[150%]  lg:w-full h-full">
+									<iframe
+										height="100%"
+										width="100%"
+										src="https://s.tradingview.com/widgetembed/?frameElementId=tradingview_b766a&amp;symbol=FX%3AUSDJPY&amp;interval=1&amp;saveimage=1&amp;toolbarbg=4f4f4f&amp;studies=%5B%5D&amp;theme=Dark&amp;style=10&amp;timezone=Etc%2FUTC&amp;studies_overrides=%7B%7D&amp;overrides=%7B%7D&amp;enabled_features=%5B%5D&amp;disabled_features=%5B%5D&amp;locale=en&amp;utm_source=google.com&amp;utm_medium=widget&amp;utm_campaign=chart&amp;utm_term=FX%3AUSDJPY"></iframe>
+								</div>
+							</article>
+						</section>
 					</main>
 				)}
 

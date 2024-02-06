@@ -75,12 +75,12 @@ const changeTxnStatus = asyncHandler(async (req, res) => {
 		throw new Error("The provided transaction has already been moderated . Create a new transaction to continue");
 	}
 
-	// If a withdrawal declined , then update balance accordingly if it is a deposit or a withdrawal
-	if ((status === "declined" && txn?.type === "withdrawal") || (status === "approved" && txn?.type === "deposit")) {
-		await Users.updateOne({ _id: txn.author }, { $inc: { balance: txn.amount } });
+	// Add the amount back into user's profit if withdrawal is declined
+	if (status === "declined" && txn?.type === "withdrawal") {
+		await Users.updateOne({ _id: txn.author }, { $inc: { profit: txn.amount } });
 	}
 
-	// Send am email to user
+	// Send an email to user
 	await notifyUserOfModeratedTxn({
 		username: txn.author.firstname,
 		amount: `$${txn.amount.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
@@ -104,7 +104,7 @@ const insertNewWithdrawal = asyncHandler(async (req, res) => {
 	}
 
 	// Check if the provided amount is okay
-	if (req.user.balance < amount) {
+	if (req.user.profit < amount) {
 		res.status(400);
 		throw new Error("User balance is insufficient to complete withdrawal request");
 	}
@@ -127,8 +127,8 @@ const insertNewWithdrawal = asyncHandler(async (req, res) => {
 		link,
 	});
 
-	// Deduct withdrawal amount from user.
-	await Users.updateOne({ _id: proof.author }, { $inc: { balance: -proof.amount } });
+	// Deduct withdrawal amount from user's profit.
+	await Users.updateOne({ _id: proof.author }, { $inc: { profit: -proof.amount } });
 
 	res.status(200).json({ success: true, message: "The withdrawal request was successfully added" });
 });

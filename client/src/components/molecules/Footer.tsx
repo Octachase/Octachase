@@ -63,8 +63,8 @@ const Footer = () => {
 						)}
 						{user._id && (
 							<li>
-								<Link href="/dashboard/trades" className="text-[12px] hover:text-[#75ace7]">
-									Trades
+								<Link href={user?.isAdmin ? "/admin" : "/dashboard"} className="text-[12px] hover:text-[#75ace7]">
+									Dashboard
 								</Link>
 							</li>
 						)}

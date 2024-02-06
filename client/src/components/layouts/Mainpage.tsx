@@ -16,7 +16,7 @@ import { MdOutlineAccountBalanceWallet, MdClose } from "react-icons/md";
 import { CiDollar, CiImport } from "react-icons/ci";
 import { GoDatabase } from "react-icons/go";
 import { FaPowerOff, FaUser } from "react-icons/fa6";
-import { VscGraphLine } from "react-icons/vsc";
+import { FaPlus } from "react-icons/fa6";
 import { RiAdminFill, RiLuggageDepositLine } from "react-icons/ri";
 import { BiMoneyWithdraw } from "react-icons/bi";
 import { FaUsers } from "react-icons/fa";
@@ -55,14 +55,6 @@ const Component = ({ children, isAdmin = false }: { children: ReactNode; isAdmin
 								<p className="">Dashboard</p>
 							</Link>
 
-							<Link
-								href="/dashboard/trades"
-								className={`${
-									pathname.startsWith("/dashboard/trades") ? "bg-[#5A5557]" : "hover:bg-[#5A5557]"
-								} flex items-center gap-3 mb-2   opacity-50 text-sm hover:opacity-80 rounded-[5px] py-3 p-2`}>
-								<VscGraphLine className="text-lg" />
-								<p className="">My Trades</p>
-							</Link>
 							<Link
 								href="/dashboard/profile"
 								className={`${
@@ -120,14 +112,6 @@ const Component = ({ children, isAdmin = false }: { children: ReactNode; isAdmin
 							</Link>
 
 							<Link
-								href="/admin/trades"
-								className={`${
-									pathname === "/admin/trades" ? "bg-[#5A5557]" : "hover:bg-[#5A5557]"
-								} flex items-center gap-3 mb-2   opacity-50 text-sm hover:opacity-80 rounded-[5px] py-3 p-2`}>
-								<VscGraphLine className="text-lg" />
-								<p className="">Trades</p>
-							</Link>
-							<Link
 								href="/admin/deposits"
 								className={`${
 									pathname === "/admin/deposits" ? "bg-[#5A5557]" : "hover:bg-[#5A5557]"
@@ -150,6 +134,14 @@ const Component = ({ children, isAdmin = false }: { children: ReactNode; isAdmin
 								} flex items-center gap-3 mb-2   opacity-50 text-sm hover:opacity-80 rounded-[5px] py-3 p-2`}>
 								<FaUsers className="text-lg" />
 								<p className="">Users</p>
+							</Link>
+							<Link
+								href="/admin/add-profit"
+								className={`${
+									pathname === "/admin/add-profit" ? "bg-[#5A5557]" : "hover:bg-[#5A5557]"
+								} flex items-center gap-3 mb-2   opacity-50 text-sm hover:opacity-80 rounded-[5px] py-3 p-2`}>
+								<FaPlus className="text-lg" />
+								<p className="">Add Profit</p>
 							</Link>
 							<Link
 								href="/admin/transactions"

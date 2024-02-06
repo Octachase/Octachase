@@ -9,16 +9,13 @@ import { useGetUserMetricsQuery } from "@/apis/usersApi";
 import formatNumberIntoMoney from "@/utils/formatNumberIntoMoney";
 
 import Mainpage from "@/components/layouts/Mainpage";
-import PricesIframe from "@/components/atoms/PricesIframe";
 import Loading from "@/components/atoms/Loading";
 
 import { FaMoneyBill } from "react-icons/fa";
-import { VscGraphLine } from "react-icons/vsc";
 
 const page = () => {
 	const { data, isLoading } = useGetUserMetricsQuery();
-
-	const user = useSelector(useUserSlice);
+	const { user } = useSelector(useUserSlice);
 	return (
 		<Mainpage>
 			{/* Breadcrumb */}
@@ -29,10 +26,6 @@ const page = () => {
 					</Link>{" "}
 					/ <span className="opacity-100 text-breadcrumb">My Account</span> / <span className="opacity-40">Welcome! {user?.firstname}</span>
 				</div>
-
-				<p className="font-bold text-sm w-full lg:w-[200px] flex justify-start lg:items-center lg:justify-center">
-					Balance : <span className="text-sec">${formatNumberIntoMoney(user?.balance)}</span>
-				</p>
 			</div>
 
 			{/* <PricesIframe /> */}
@@ -41,13 +34,13 @@ const page = () => {
 				{!isLoading && (
 					<main className="px-5">
 						<div className="grid grid-cols-1 lg:grid-cols-4 items-center justify-between h-auto lg:h-24 gap-4 mt-4">
-							<div className="flex w-full h-full items-center justify-between bg-[#5965F9] p-6 rounded-[5px]">
+							<div className="flex w-full h-full items-center justify-between bg-[#17A2B8] p-6 rounded-[5px]">
 								<div>
-									<h3 className="text-sm font-bold">Active Trade Count</h3>
-									<p className="text-xl lg:text-2xl mt-[3px] uppercase font-semibold">{data?.trades} </p>
+									<h3 className="text-sm font-bold uppercase">Profit</h3>
+									<p className="text-xl lg:text-2xl mt-[3px] font-semibold">${formatNumberIntoMoney(user?.profit as number)}</p>
 								</div>
 								<div>
-									<VscGraphLine className="text-2xl" />
+									<FaMoneyBill className="text-4xl" />
 								</div>
 							</div>
 							<div className="flex w-full h-full items-center justify-between bg-[#17A2B8] p-6 rounded-[5px]">
@@ -59,15 +52,7 @@ const page = () => {
 									<FaMoneyBill className="text-4xl" />
 								</div>
 							</div>
-							<div className="flex w-full h-full items-center justify-between bg-[#17A2B8] p-6 rounded-[5px]">
-								<div>
-									<h3 className="text-sm font-bold uppercase">Profit</h3>
-									<p className="text-xl lg:text-2xl mt-[3px] font-semibold">${formatNumberIntoMoney(data?.profit as number)}</p>
-								</div>
-								<div>
-									<FaMoneyBill className="text-4xl" />
-								</div>
-							</div>
+
 							<div className="flex w-full h-full items-center justify-between bg-[#17A2B8] p-6 rounded-[5px]">
 								<div className="">
 									<h3 className="text-sm font-bold uppercase">Withdrawals</h3>
@@ -80,15 +65,29 @@ const page = () => {
 						</div>
 
 						{/* Coin Prices */}
-						<div className="w-full flex flex-col lg:flex-row items-center justify-between gap-6 h-auto  mt-4">
-							<div className="w-full h-32rounded-[5px] bg-[#1e222d] ">
-								<iframe src="https://widget.coinlib.io/widget?type=chart&amp;theme=dark&amp;coin_id=859&amp;pref_coin_id=1505"></iframe>
+						<div className="w-full  grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3  items-center justify-between gap-6 h-auto  mt-4">
+							<div className="w-full h-32  overflow-hidden rounded-[5px] bg-[#1e222d] ">
+								<iframe
+									src="https://widget.coinlib.io/widget?type=chart&amp;theme=dark&amp;coin_id=859&amp;pref_coin_id=1505"
+									width="100%"
+									height="500px"
+									sandbox="allow-same-origin allow-scripts allow-popups allow-forms"
+									className="w-full !overflow-hidden"></iframe>
 							</div>
-							<div className="w-full h-32 rounded-[5px] bg-[#1e222d] ">
-								<iframe src="https://widget.coinlib.io/widget?type=chart&amp;theme=dark&amp;coin_id=145&amp;pref_coin_id=1505"></iframe>
+							<div className="w-full h-32  overflow-hidden rounded-[5px] bg-[#1e222d] ">
+								<iframe
+									src="https://widget.coinlib.io/widget?type=chart&amp;theme=dark&amp;coin_id=145&amp;pref_coin_id=1505"
+									width="100%"
+									height="500px"
+									className="w-full overflow-hidden"
+									sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
 							</div>
-							<div className="w-full h-32 rounded-[5px] bg-[#1e222d] ">
-								<iframe src="https://widget.coinlib.io/widget?type=chart&amp;theme=dark&amp;coin_id=359&amp;pref_coin_id=1505"></iframe>
+							<div className="w-full h-32  overflow-hidden rounded-[5px] bg-[#1e222d] ">
+								<iframe
+									src="https://widget.coinlib.io/widget?type=chart&amp;theme=dark&amp;coin_id=359&amp;pref_coin_id=1505"
+									className="w-full overflow-hidden"
+									height="500px"
+									sandbox="allow-same-origin allow-scripts allow-popups allow-forms"></iframe>
 							</div>
 						</div>
 

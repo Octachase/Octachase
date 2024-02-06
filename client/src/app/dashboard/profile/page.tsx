@@ -43,7 +43,6 @@ const page = () => {
 								{user?.profile && <Image src={user?.profile} fill alt="User profile" />}
 							</div>
 							<p className="text-2xl">{user?.firstname}</p>
-							<p className="text-sm opacity-30">Membership - {user?.subscriptionType}</p>
 							<p className="text-sm mt-[2px]">
 								Joined - <span className="text-sec text-sm">{createDateFromString(user?.createdAt)}</span>{" "}
 							</p>

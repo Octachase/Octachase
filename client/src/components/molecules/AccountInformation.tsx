@@ -34,7 +34,7 @@ const AccountInformation = ({ setShowInformation }: { setShowInformation: React.
 
 				<div className="flex w-[90%] pb-6 border-b-[1px] items-center justify-center flex-col py-4 ">
 					<h3>{user?.firstname}</h3>
-					<p className="opacity-40 text-sm">BALANCE - ${formatNumberIntoMoney(user?.balance)}</p>
+					<p className="opacity-40 text-sm">PROFIT - ${formatNumberIntoMoney(user?.profit)}</p>
 					<p className="opacity-40 mt-2 text-sm">Joined -{createDateFromString(user?.createdAt)}</p>
 				</div>
 

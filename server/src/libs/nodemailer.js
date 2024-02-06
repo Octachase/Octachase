@@ -142,37 +142,15 @@ async function notifyUserOfModeratedTxn({ username, amount, txnId, status, type,
 
 	await sendEmail(email, subject, txt);
 }
-
-async function newTradeCreated({ type, tradeId, username, amount, date }) {
-	let template = fs.readFileSync(path.join(__dirname, "..", "templates", "new-trade-created.html"), "utf-8");
+async function notifyUserOfProfit({ username, amount, email }) {
+	let template = fs.readFileSync(path.join(__dirname, "..", "templates", "profit-received.html"), "utf-8");
 	let keys = [
 		{ tag: "{{username}}", value: username },
 		{ tag: "{{amount}}", value: amount },
-		{ tag: "{{date}}", value: date },
-		{ tag: "{{tradeId}}", value: tradeId },
-		{ tag: "{{type}}", value: type },
-		{ tag: "{{link}}", value: `${process.env.FRONTEND_URL}/admin/trades` },
+		{ tag: "{{support}}", value: process.env.SUPPORT_EMAIL },
 	];
 
-	let subject = `New Trade Created!! (${tradeId})`;
-
-	let txt = replaceKeys(template, keys);
-
-	await sendEmail(process.env.SUPPORT_EMAIL, subject, txt);
-}
-async function notifyUserOfCompletedTrade({ type, tradeId, username, amount, date, email, profit }) {
-	let template = fs.readFileSync(path.join(__dirname, "..", "templates", "trade-completed.html"), "utf-8");
-	let keys = [
-		{ tag: "{{username}}", value: username },
-		{ tag: "{{amount}}", value: amount },
-		{ tag: "{{date}}", value: date },
-		{ tag: "{{tradeId}}", value: tradeId },
-		{ tag: "{{type}}", value: type },
-		{ tag: "{{profit}}", value: profit },
-		{ tag: "{{link}}", value: `${process.env.FRONTEND_URL}/dashboard/trades` },
-	];
-
-	let subject = `Your Trade Has Been Completed!! (${tradeId})`;
+	let subject = `ATTENTION - Your Recived Profit...`;
 
 	let txt = replaceKeys(template, keys);
 
@@ -188,6 +166,5 @@ module.exports = {
 	notifyAdminOfPendingDeposit,
 	notifyUserOfModeratedTxn,
 	notifyAdminOfNewWithdrawalRequest,
-	newTradeCreated,
-	notifyUserOfCompletedTrade,
+	notifyUserOfProfit,
 };

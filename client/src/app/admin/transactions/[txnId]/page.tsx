@@ -70,7 +70,11 @@ const page = () => {
 		addFeesRequest({ fees, txnId: txnId as string });
 	};
 
-	useEffect(() => {}, [addFeesData]);
+	useEffect(() => {
+		if (!addFeesData) return;
+		toast.success("Fees successfully added", { autoClose: 1500 });
+		router.replace("/admin/withdrawals");
+	}, [addFeesData]);
 
 	useCreateErrorFromApiRequest(moderationError);
 	useCreateErrorFromApiRequest(error);

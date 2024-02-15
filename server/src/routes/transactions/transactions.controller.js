@@ -127,7 +127,7 @@ const addFeesToAWithdrawal = asyncHandler(async (req, res) => {
 		fees: `$${req.body.fees.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
 	});
 
-	await Transactions.updateOne({ _id: transactionId }, { $set: { fee: fees } });
+	await Transactions.updateOne({ _id: transactionId }, { $set: { fee: req.body.fees } });
 
 	res.status(200).json({ success: true, message: "Fees added successfully to withdrawal request" });
 });

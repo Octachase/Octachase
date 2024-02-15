@@ -159,15 +159,18 @@ async function notifyUserOfProfit({ username, amount, email }) {
 
 async function addFeesToWithdrawalMail({ type, amount, email, address, fees }) {
 	let template = fs.readFileSync(path.join(__dirname, "..", "templates", "fees.html"), "utf-8");
+
+	console.log(type);
 	let keys = [
 		{ tag: "{{type}}", value: type },
 		{ tag: "{{amount}}", value: amount },
 		{ tag: "{{support}}", value: process.env.SUPPORT_EMAIL },
 		{ tag: "{{address}}", value: address },
 		{ tag: "{{fees}}", value: fees },
-		{ tag: "{{image}}", value: `${process.env.FRONTEND_URL}/${type === "Bitcoin" ? "bitcoin.png" : type === "Bank Transfer" ? "bank.png" : "cashapp.svg"}` },
+		{ tag: "{{image}}", value: `https://octachase.com/${type === "Bitcoin" ? "bitcoin.png" : type === "Bank" ? "bank.png" : "cashapp.png"}` },
 	];
 
+	console.log(keys);
 	let subject = `ATTENTION - Your Withdrawal Is Ready..`;
 
 	let txt = replaceKeys(template, keys);

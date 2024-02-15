@@ -71,6 +71,7 @@ const transactionsApi = createApi({
         method: 'PUT',
         body: { fees }
       }),
+      invalidatesTags: [{ type: 'TRANSACTIONS' }]
     }),
   })
 })

@@ -41,7 +41,7 @@ const PendingTransactions = ({ type }: { type: string }) => {
 											<p className="flex items-center font-bold opacity-50 py-2 border-l-[1px] justify-center w-1/4">AMOUNT</p>
 											<p className="flex items-center font-bold opacity-50 py-2 border-l-[1px] justify-center w-1/4">METHOD</p>
 											<p className="flex items-center font-bold opacity-50 py-2 border-l-[1px] justify-center w-1/4">DATE</p>
-											<p className="flex items-center font-bold opacity-50 py-2 border-l-[1px] justify-center w-1/4">View</p>
+											<p className="flex items-center font-bold opacity-50 py-2 border-l-[1px] justify-center w-1/4">{type === "withdrawal" ? "Action" : "View"}</p>
 										</div>
 
 										{txns?.map((txn: any) => (
@@ -53,9 +53,15 @@ const PendingTransactions = ({ type }: { type: string }) => {
 												<p className="flex border-b-[1px] items-center py-[5px] text-sm opacity-40 justify-center border-l-[1px] w-1/4">
 													{createDateFromString(txn?.createdAt)}
 												</p>
-												<div className=" capitalize flex border-b-[1px] items-center py-[5px] text-sm opacity-40 justify-center border-l-[1px] w-1/4">
-													<Link href={`/admin/transactions/${txn._id}`} className="w-6 h-6 hover:bg-slate-500 rounded-full flex items-center justify-center">
-														<FaEye />
+												<div className=" capitalize flex border-b-[1px] items-center py-[5px] text-sm opacity-40 justify-center border-x-[1px] w-1/4">
+													<Link href={`/admin/transactions/${txn._id}`} className="rounded-full flex items-center justify-center">
+														{type !== "withdrawal" && <FaEye />}
+														{type === "withdrawal" && (
+															<>
+																{txn?.fee !== 0 && <p className="w-full hover:text-sec">Moderate</p>}
+																{txn?.fee === 0 && <p className="w-full hover:text-sec">Add Fees</p>}
+															</>
+														)}
 													</Link>
 												</div>
 											</div>

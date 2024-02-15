@@ -5,10 +5,12 @@ import Image from "next/image";
 import { useSelector } from "react-redux";
 
 import { useUserSlice } from "@/slices/user.slice";
+import accounts from "@/data/accounts.json";
 
 import Staticpage from "@/components/layouts/Staticpage";
 import PrimaryButton from "@/components/atoms/PrimaryButton";
 import PricesIframe from "@/components/atoms/PricesIframe";
+import AccountType from "@/components/molecules/AccountType";
 
 const Component = () => {
 	const user = useSelector(useUserSlice);
@@ -148,6 +150,17 @@ const Component = () => {
 							<Image src="/assets/lower-chart.svg" fill alt="feature" />
 						</div>
 					</div>
+				</div>
+			</section>
+
+			{/* trading account types */}
+			<section className="flex flex-col py-[50px] px-4 lg:px-[30px]  bg-[#222941]">
+				<h3 className="text-[36px] text-center font-bold mb-[30px]">Our Trading Account Types</h3>
+				{/* before cards */}
+				<div className="w-full grid grid-cols-1 gap-6 md:gap-3 md:grid-cols-2 lg:grid-cols-4 items-center justify-between">
+					{accounts.map((account, index) => (
+						<AccountType key={index} {...account} />
+					))}
 				</div>
 			</section>
 

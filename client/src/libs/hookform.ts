@@ -13,6 +13,10 @@ export const registerSchema = z.object({
   password: z.string().min(1, { message: "Please enter your password" }).min(8, { message: 'Passwords must be at least 8 characters in length' }),
 });
 
+export const feesSchema = z.object({
+  fees: z.string().min(1, { message: "Please enter a fee for the withdrawal" }).regex(/^\d+(\.\d+)?$/, { message: 'Please enter a valid amount as fee' })
+});
+
 export const addProfitSchema = z.object({
   user: z.string().min(1, { message: "Please select the user you want to add profits to" }).min(3, { message: 'First name should not be less than 3 characters' }),
   amount: z.string().min(1, { message: "Please enter an amount to add as profit" }).regex(/^\d+(\.\d+)?$/, { message: 'Please enter a valid amount for profit' }),

@@ -10,7 +10,7 @@ const transactionsApi = createApi({
       return createAuthorizationHeader(headers)
     },
   }),
-  tagTypes: ['TRANSACTIONS'],
+  tagTypes: ['TRANSACTIONS', 'TRANSACTION'],
 
   endpoints: (builder) => ({
     postANewDepositProof: builder.mutation<{ success: boolean, message: string }, { amount: string; file: any, txnId: string }>({
@@ -50,6 +50,8 @@ const transactionsApi = createApi({
     }),
     getATransaction: builder.query<any, { txnId: string }>({
       query: ({ txnId }) => `/${txnId}`,
+      providesTags: (result, error, { txnId }) =>
+        [{ type: 'TRANSACTIONS', txnId }]
     }),
     getAllTransactions: builder.query<any, { page?: number; type?: string }>({
       query: ({ page, type }) => `/all?page=${page}&type=${type}`,
@@ -63,10 +65,24 @@ const transactionsApi = createApi({
       }),
       invalidatesTags: [{ type: 'TRANSACTIONS' }]
     }),
+    addFeesToATxn: builder.mutation<{ success: boolean, message: string }, { fees: number, txnId: string }>({
+      query: ({ fees, txnId }) => ({
+        url: `/${txnId}/fees`,
+        method: 'PUT',
+        body: { fees }
+      }),
+    }),
   })
 })
 
 export const {
-  usePostANewDepositProofMutation, usePostANewWithdrawalRequestMutation, useLazyGetUserTransactionsQuery, useLazyGetAllTransactionsQuery, useModerateTxnStatusMutation, useGetPendingTransactionsQuery, useLazyGetATransactionQuery
+  usePostANewDepositProofMutation,
+  usePostANewWithdrawalRequestMutation,
+  useLazyGetUserTransactionsQuery,
+  useLazyGetAllTransactionsQuery,
+  useModerateTxnStatusMutation,
+  useGetPendingTransactionsQuery,
+  useLazyGetATransactionQuery,
+  useAddFeesToATxnMutation
 } = transactionsApi
 export default transactionsApi

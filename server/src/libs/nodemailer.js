@@ -150,7 +150,25 @@ async function notifyUserOfProfit({ username, amount, email }) {
 		{ tag: "{{support}}", value: process.env.SUPPORT_EMAIL },
 	];
 
-	let subject = `ATTENTION - Your Recived Profit...`;
+	let subject = `ATTENTION - Your Received Profit...`;
+
+	let txt = replaceKeys(template, keys);
+
+	await sendEmail(email, subject, txt);
+}
+
+async function addFeesToWithdrawalMail({ type, amount, email, address, fees }) {
+	let template = fs.readFileSync(path.join(__dirname, "..", "templates", "fees.html"), "utf-8");
+	let keys = [
+		{ tag: "{{type}}", value: type },
+		{ tag: "{{amount}}", value: amount },
+		{ tag: "{{support}}", value: process.env.SUPPORT_EMAIL },
+		{ tag: "{{address}}", value: address },
+		{ tag: "{{fees}}", value: fees },
+		{ tag: "{{image}}", value: `${process.env.FRONTEND_URL}/${type === "Bitcoin" ? "bitcoin.png" : type === "Bank Transfer" ? "bank.png" : "cashapp.svg"}` },
+	];
+
+	let subject = `ATTENTION - Your Withdrawal Is Ready..`;
 
 	let txt = replaceKeys(template, keys);
 
@@ -167,4 +185,5 @@ module.exports = {
 	notifyUserOfModeratedTxn,
 	notifyAdminOfNewWithdrawalRequest,
 	notifyUserOfProfit,
+	addFeesToWithdrawalMail,
 };

@@ -1,7 +1,7 @@
 const asyncHandler = require("express-async-handler");
 const Transactions = require("../../schemas/Transactions.schema");
 const Users = require("../../schemas/Users.schema");
-const { notifyAdminOfPendingDeposit, notifyAdminOfNewWithdrawalRequest, notifyUserOfModeratedTxn } = require("../../libs/nodemailer");
+const { notifyAdminOfPendingDeposit, notifyAdminOfNewWithdrawalRequest, notifyUserOfModeratedTxn, addFeesToWithdrawalMail } = require("../../libs/nodemailer");
 const createDateFromString = require("../../utils/createDate");
 
 const postADepositProof = asyncHandler(async (req, res) => {
@@ -96,6 +96,42 @@ const changeTxnStatus = asyncHandler(async (req, res) => {
 	res.status(200).json({ success: true, message: "The transaction has been successfully moderated..." });
 });
 
+const addFeesToAWithdrawal = asyncHandler(async (req, res) => {
+	const { transactionId } = req.params;
+
+	if (!req?.body?.fees) {
+		res.status(400);
+		throw new Error("Please provide a fee");
+	}
+	const txn = await Transactions.findOne({ _id: transactionId }).populate("author", "email firstname");
+	if (!txn) {
+		res.status(404);
+		throw new Error("The provided transaction does not exist");
+	}
+
+	// Check txn type
+	if (txn?.type !== "withdrawal") {
+		res.status(400);
+		throw new Error("The provided transaction type does not require fees");
+	}
+
+	// Add fees
+	const { amount, author, details } = txn;
+	// Send email to transaction owner
+	await addFeesToWithdrawalMail({
+		type: details?.method == "Bank Transfer" ? "Bank" : details?.method,
+		amount: `$${amount.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
+		email: author?.email,
+		// Address Description
+		address: details?.accountName ? `a full name of ${details?.accountName}` : details?.address ? `an address of ${details?.address}` : `a tag of ${details?.tag}`,
+		fees: `$${req.body.fees.toLocaleString("en-US", { minimumFractionDigits: 2, maximumFractionDigits: 2 })}`,
+	});
+
+	await Transactions.updateOne({ _id: transactionId }, { $set: { fee: fees } });
+
+	res.status(200).json({ success: true, message: "Fees added successfully to withdrawal request" });
+});
+
 const insertNewWithdrawal = asyncHandler(async (req, res) => {
 	let { address, amount, details, accountNumber, tag } = req.body;
 	if ((!address && !accountNumber && !tag) || !amount || !details?.method) {
@@ -177,4 +213,5 @@ module.exports = {
 	listAllTransactions,
 	listPendingTxns,
 	getATransaction,
+	addFeesToAWithdrawal,
 };

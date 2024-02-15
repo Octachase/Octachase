@@ -26,6 +26,11 @@ const transactionsSchema = mongoose.Schema(
 			type: String,
 			default: "pending",
 		},
+		// Fee is needed in only withdrawals and is been set by admin later after a withdrawal request has been received
+		fee: {
+			type: Number,
+			default: 0,
+		},
 	},
 	{
 		timestamps: true,

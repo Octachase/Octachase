@@ -1,0 +1,30 @@
+[
+	{
+		"percentage": "30",
+		"days": "7",
+		"name": "Starter",
+		"min": 500,
+		"max": 4999
+	},
+	{
+		"percentage": "55",
+		"days": "6",
+		"name": "Silver",
+		"min": 1000,
+		"max": 9999
+	},
+	{
+		"percentage": "69",
+		"days": "5",
+		"name": "Gold",
+		"min": 2500,
+		"max": 20000
+	},
+	{
+		"percentage": "123.5",
+		"days": "3",
+		"name": "Platinum",
+		"min": 15000,
+		"max": 50000
+	}
+]

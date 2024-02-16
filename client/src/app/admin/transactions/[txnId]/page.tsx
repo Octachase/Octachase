@@ -117,7 +117,7 @@ const page = () => {
 
 						{txn?.status === "pending" && (
 							<>
-								{txn?.fee !== 0 && txn.type === "withdrawal" && (
+								{((txn?.fee !== 0 && txn.type === "withdrawal") || txn?.type === "deposit") && (
 									<div className="mt-4">
 										<h3 className="mb-3">Moderate Transaction</h3>
 										<div className="flex w-full flex-col lg:flex-row items-center justify-start gap-2 lg:gap-6">

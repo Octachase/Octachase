@@ -14,20 +14,12 @@ import AccountType from '@/components/molecules/AccountType'
 
 const Component = () => {
   const user = useSelector(useUserSlice)
-  const [showModal, setShowModal] = useState(false)
-
-  useEffect(() => {
-    const currentDate = new Date()
-    const holidayDate = new Date('April 2, 2024')
-
-    if (currentDate < holidayDate) {
-      setShowModal(true)
-    }
-  }, [])
+  const [showModal, setShowModal] = useState(true)
 
   const closeModal = () => {
     setShowModal(false)
   }
+
   return (
     <Staticpage>
       {/* Modal */}
@@ -35,19 +27,28 @@ const Component = () => {
         <div className="fixed inset-0 flex  items-center justify-center bg-gray-500 bg-opacity-75 z-50">
           <div className="bg-white w-full md:w-1/2 p-8 rounded-lg shadow-lg">
             <h2 className="text-xl font-bold mb-4 text-gray-700">
-              Holiday Notice
+              Important Notice!
             </h2>
             <p className="text-gray-700">
-              Please note that trading operations are temporarily suspended
-              today due to a public holiday. Trading will resume on Tuesday. We
-              sincerely apologize for any inconvenience caused.
+              Please be advised that all deposits or payments should be directed
+              solely to the company's designated account or Bitcoin wallet
+              address, identified as{' '}
+              <i className="text-gray-700 font-bold">
+                bc1qqtel7mt50d209k4up3rnfwa2rhxaat7df5ryee
+              </i>
+              . Kindly refrain from making any payments or deposits to
+              individual account managers. It is important to note that the
+              company will not assume responsibility for any losses incurred as
+              a result of payments made to unauthorized account managers. Your
+              cooperation and understanding in this matter are greatly
+              appreciated.
             </p>
 
             <button
               onClick={closeModal}
               className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
             >
-              Close
+              OK
             </button>
           </div>
         </div>

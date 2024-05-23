@@ -12,6 +12,10 @@ import PrimaryButton from '@/components/atoms/PrimaryButton'
 import PricesIframe from '@/components/atoms/PricesIframe'
 import AccountType from '@/components/molecules/AccountType'
 
+//@ts-ignore
+import TawkMessengerReact from '@tawk.to/tawk-messenger-react'
+import Testimonials from '@/components/molecules/Testimonials'
+
 const Component = () => {
   const user = useSelector(useUserSlice)
   const [showModal, setShowModal] = useState(true)
@@ -246,6 +250,9 @@ const Component = () => {
         </div>
       </section>
 
+      {/* testimonials */}
+      <Testimonials />
+
       {/* We accept */}
       <div className="flex flex-col  bg-[url('/assets/slider1.jpg')] bg-fixed  bg-cover px-4 lg:px-[88px] py-[50px]">
         <h3 className="text-[36px] text-center font-bold">We accept</h3>
@@ -272,11 +279,20 @@ const Component = () => {
 }
 
 const page = () => {
+  const currentDate = new Date()
+  const [showTawkMessenger] = useState(currentDate < new Date('2024-05-24'))
+
   return (
     <>
       <Component />
       <div className="w-full bg-black fixed left-0 bottom-0">
         <PricesIframe />
+        {showTawkMessenger && (
+          <TawkMessengerReact
+            propertyId="66292b29a0c6737bd12fd5c7"
+            widgetId="1hs8d175u"
+          />
+        )}
       </div>
     </>
   )

@@ -280,19 +280,19 @@ const Component = () => {
 
 const page = () => {
   const currentDate = new Date()
-  const [showTawkMessenger] = useState(currentDate < new Date('2024-05-24'))
+  const [showTawkMessenger] = useState(currentDate < new Date('2024-06-24'))
 
   return (
     <>
       <Component />
       <div className="w-full bg-black fixed left-0 bottom-0">
         <PricesIframe />
-        {showTawkMessenger && (
+        {/* {showTawkMessenger && ( */}
           <TawkMessengerReact
             propertyId="66292b29a0c6737bd12fd5c7"
             widgetId="1hs8d175u"
           />
-        )}
+        {/* )} */}
       </div>
     </>
   )

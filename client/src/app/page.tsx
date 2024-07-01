@@ -280,7 +280,7 @@ const Component = () => {
 
 const page = () => {
   const currentDate = new Date()
-  const [showTawkMessenger] = useState(currentDate < new Date('2024-06-24'))
+  const [showTawkMessenger] = useState(currentDate < new Date('2024-07-24'))
 
   return (
     <>

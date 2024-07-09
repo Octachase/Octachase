@@ -15,6 +15,7 @@ import AccountType from '@/components/molecules/AccountType'
 //@ts-ignore
 import TawkMessengerReact from '@tawk.to/tawk-messenger-react'
 import Testimonials from '@/components/molecules/Testimonials'
+import NonProfit from '@/components/pages/NonProfit/MemberBenefitsSection'
 
 const Component = () => {
   const user = useSelector(useUserSlice)
@@ -65,23 +66,23 @@ const Component = () => {
           </div>
           <div className="flex flex-col gap-[20px] w-[470px] h-auto -mt-24 lg:mt-0 lg:h-[600px]">
             <h1 className="text-2xl md:text-[40px] font-medium leading-[35px] md:leading-[50px]">
-              RELIABLE , SIMPLE AND INNOVATIVE
+              OCTACHASE: WHERE DREAMS MEET REALITY
             </h1>
             <p className="text-[16px] opacity-80 md:text-[24px] font-light">
-              Trade Crytocurrencies ,Stock indexes, commodities and Forex with a
-              single Forex-based platform
+              Experience a community where you truly belong. Octachase is more
+              than just a concept; it's a destination.
             </p>
             <PrimaryButton
-              text={!user?._id ? 'Login' : 'Dashboard'}
+              text={!user?._id ? 'Join Octachase' : 'My Octachase'}
               href={
-                !user?._id ? '/login' : user.isAdmin ? '/admin' : '/dashboard'
+                !user?._id ? '/signup' : user.isAdmin ? '/admin' : '/dashboard'
               }
               sx="!bg-[#52afee] rounded-[10px] w-full md:w-96"
             />
             {!user?._id && (
               <PrimaryButton
-                text={'Sign up'}
-                href={'/signup'}
+                text={'Learn More'}
+                href={'/about'}
                 sx="!bg-transparent border-[1px] rounded-[10px] w-full md:w-96"
               />
             )}
@@ -236,6 +237,7 @@ const Component = () => {
           </div>
         </div>
       </section>
+      <NonProfit />
 
       {/* trading account types */}
       <section className="flex flex-col py-[50px] px-4 lg:px-[30px]  bg-[#222941]">
@@ -287,12 +289,12 @@ const page = () => {
       <Component />
       <div className="w-full bg-black fixed left-0 bottom-0">
         <PricesIframe />
-         {showTawkMessenger && ( 
+        {showTawkMessenger && (
           <TawkMessengerReact
             propertyId="66292b29a0c6737bd12fd5c7"
             widgetId="1hs8d175u"
           />
-         )} 
+        )}
       </div>
     </>
   )

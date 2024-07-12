@@ -29,7 +29,7 @@ const Component = () => {
     <Staticpage>
       {/* Modal */}
       {showModal && (
-        <div className="fixed inset-0 flex  items-center justify-center bg-gray-500 bg-opacity-75 z-50">
+        <div className="fixed inset-0 flex  items-center justify-center  bg-opacity-75 z-50">
           <div className="bg-white w-full md:w-1/2 p-8 rounded-lg shadow-lg">
             <h2 className="text-xl font-bold mb-4 text-gray-700">
               Important Notice!
@@ -90,7 +90,7 @@ const Component = () => {
         </div>
       </section>
       {/* commodities chart */}
-      <section className="w-full h-[100vh] bg-[#222941]">
+      <section className="w-full h-[100vh]">
         <iframe
           height="100%"
           width="100%"
@@ -99,10 +99,12 @@ const Component = () => {
         ></iframe>
       </section>
       {/* How it works */}
-      <section className="bg-[#222941] py-12 w-full h-auto">
+      <section className=" py-12 w-full h-auto">
         <div className="flex max-w-6xl mx-auto flex-col  items-center justify-center">
-          <h3 className="text-[28px] mb-8 uppercase font-bold">How it works</h3>
-          <div className="flex flex-col md:flex-row px-6 lg:p-12 p-12 gap-[30px] h-auto lg:h-[190px] items-center bg-[#00000026] rounded-[30px]">
+          <h3 className="text-[28px] mb-8 uppercase font-bold text-[#222941] ">
+            How it works
+          </h3>
+          <div className="flex flex-col md:flex-row px-6 lg:p-12 p-12 gap-[30px] h-auto lg:h-[190px] items-center bg-[#222941] rounded-[30px]">
             {[
               {
                 title: 'Deposit',
@@ -140,32 +142,36 @@ const Component = () => {
       </section>
 
       {/* features */}
-      <section className="bg-[#222941]  py-12 w-full h-auto">
+      <section className="py-12 w-full h-auto">
         <div className="flex flex-col max-w-6xl px-4 lg:px-24 mx-auto">
           <article className="flex gap-[3px] lg:gap-3 mb-3 items-center">
             <div className="w-12 h-8 relative">
               <Image src="/assets/features.svg" fill alt="star" />
             </div>
-            <h3 className="text-2xl lg:text-4xl font-bold">Features</h3>
+            <h3 className="text-2xl lg:text-4xl font-bold text-[#222941]">
+              Features
+            </h3>
           </article>
           <article className="w-full flex flex-col md:flex-row gap-12 mb-10">
-            <p className="basis-[50%] text-[14px]">
+            <p className="basis-[50%] text-[14px] text-[#222941]">
               We provide fastest trading using modern technologies. No delays in
               order executions and most accurate quotes. Our trading platform is
               available around the clock and on weekends. Octachase customer
               service is available 24/7. We are continuously adding new
               financial instruments.
             </p>
-            <ul className="px-2 text-[14px] list-disc marker:text-[#3facff] ">
-              <li>
+            <ul className="px-2 text-[#222941] text-[14px] list-disc marker:text-[#3facff] ">
+              <li className="text-[#222941]">
                 Technical analysis tools: 4 chart types, 8 indicators, trend
                 lines
               </li>
-              <li>
+              <li className="text-[#222941]">
                 Social trading: watch deals across the globe or trade with your
                 friends
               </li>
-              <li>Over 100 assets including popular stocks</li>
+              <li className="text-[#222941]">
+                Over 100 assets including popular stocks
+              </li>
             </ul>
           </article>
           <article className="w-full flex-col gap-4 md:gap-0 md:flex-row flex items-center mb-4">
@@ -194,7 +200,7 @@ const Component = () => {
         </div>
       </section>
 
-      <section className="w-full h-[70vh] bg-[#222941]">
+      <section className="w-full h-[70vh]">
         <iframe
           height="100%"
           width="100%"
@@ -240,7 +246,7 @@ const Component = () => {
       <NonProfit />
 
       {/* trading account types */}
-      <section className="flex flex-col py-[50px] px-4 lg:px-[30px]  bg-[#222941]">
+      <section className="flex flex-col py-[50px] px-4 lg:px-[30px] ">
         <h3 className="text-[36px] text-center font-bold mb-[30px]">
           Our Trading Account Types
         </h3>
@@ -287,7 +293,7 @@ const page = () => {
   return (
     <>
       <Component />
-      <div className="w-full bg-black fixed left-0 bottom-0">
+      <div className="w-full fixed left-0 bottom-0">
         <PricesIframe />
         {showTawkMessenger && (
           <TawkMessengerReact

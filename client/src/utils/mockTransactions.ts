@@ -75,7 +75,7 @@ export const transactions = Array.from({ length: 100 }).map((_, i) => {
     'Tunisia',
   ]
 
-  const actions = ['Deposited', 'Withdrew']
+  const actions = ['Deposited', 'Withdrew', 'Invested']
   const randomCountry = countries[Math.floor(Math.random() * countries.length)]
   const randomAction = actions[Math.floor(Math.random() * actions.length)]
 

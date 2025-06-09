@@ -43,7 +43,7 @@ export default function FloatingTransaction() {
     >
       <span className="text-[14px] text-[#000000] font-[500]">
         Someone from{' '}
-        <b className="font-bold text-[#000000]">{transaction.country}</b>{' '}
+        <b className="font-bold text-[#000000]">{transaction.country}</b> just{' '}
         <b className="text-[#000000] font-bold">{transaction.action}</b>
         <br />
         <span className="text-[#3facff] font-bold">{transaction.amount}</span>

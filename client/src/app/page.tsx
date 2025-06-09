@@ -1,6 +1,6 @@
 'use client'
 
-import React, { useEffect, useState } from 'react'
+import React from 'react'
 import Image from 'next/image'
 import { useSelector } from 'react-redux'
 
@@ -16,6 +16,8 @@ import AccountType from '@/components/molecules/AccountType'
 import TawkMessengerReact from '@tawk.to/tawk-messenger-react'
 import Testimonials from '@/components/molecules/Testimonials'
 import NonProfit from '@/components/pages/NonProfit/MemberBenefitsSection'
+import HeroSection from '@/components/atoms/HeroSection'
+import FloatingTransaction from '@/components/atoms/FloatingTransaction'
 
 const Component = () => {
   const user = useSelector(useUserSlice)
@@ -23,36 +25,7 @@ const Component = () => {
   return (
     <Staticpage>
       {/* Hero section */}
-      <section className="w-full h-[75vh] md:h-[60vh] lg:h-auto lg:pt-24 bg-[url('/assets/bg-about-header.jpg')] bg-cover px-4">
-        <div className="flex relative overflow-hidden items-center w-full max-w-6xl mx-auto h-full">
-          <div className="w-[520px] h-[361px]  absolute bottom-[-240px] ">
-            <Image src="/assets/slider.png" fill alt="slider" />
-          </div>
-          <div className="flex flex-col gap-[20px] w-[470px] h-auto -mt-24 lg:mt-0 lg:h-[600px]">
-            <h1 className="text-2xl md:text-[40px] font-medium leading-[35px] md:leading-[50px]">
-              OCTACHASE: WHERE DREAMS MEET REALITY
-            </h1>
-            <p className="text-[16px] opacity-80 md:text-[24px] font-light">
-              Experience a community where you truly belong. Octachase is more
-              than just a concept; it's a destination.
-            </p>
-            <PrimaryButton
-              text={!user?._id ? 'Join Octachase' : 'My Octachase'}
-              href={
-                !user?._id ? '/signup' : user.isAdmin ? '/admin' : '/dashboard'
-              }
-              sx="!bg-[#52afee] rounded-[10px] w-full md:w-96"
-            />
-            {!user?._id && (
-              <PrimaryButton
-                text={'Learn More'}
-                href={'/about'}
-                sx="!bg-transparent border-[1px] rounded-[10px] w-full md:w-96"
-              />
-            )}
-          </div>
-        </div>
-      </section>
+      <HeroSection />
       {/* commodities chart */}
       <section className="w-full h-[100vh]">
         <iframe
@@ -254,6 +227,7 @@ const page = () => {
   return (
     <>
       <Component />
+      <FloatingTransaction />
       <div className="w-full fixed left-0 bottom-0">
         <PricesIframe />
         <TawkMessengerReact

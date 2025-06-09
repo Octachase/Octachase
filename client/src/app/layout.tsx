@@ -34,10 +34,7 @@ export default function RootLayout({
         />
       </Head> */}
       <body className={inter.className}>
-        <InitialDispatch>
-          <FloatingTransaction />
-          {children}
-        </InitialDispatch>
+        <InitialDispatch>{children}</InitialDispatch>
       </body>
     </html>
   )

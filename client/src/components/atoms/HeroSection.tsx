@@ -87,7 +87,7 @@ const HeroSection = () => {
 
         {/* Content */}
         <motion.div
-          className="flex flex-col gap-[20px] w-[470px] h-auto -mt-24 lg:mt-0 lg:h-[600px] z-10"
+          className="flex flex-col gap-[20px] w-[470px] h-auto -mt-24 lg:mt-0 lg:h-[600px]"
           variants={containerVariants}
           initial="hidden"
           animate="visible"

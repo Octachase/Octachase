@@ -19,45 +19,9 @@ import NonProfit from '@/components/pages/NonProfit/MemberBenefitsSection'
 
 const Component = () => {
   const user = useSelector(useUserSlice)
-  const [showModal, setShowModal] = useState(true)
-
-  const closeModal = () => {
-    setShowModal(false)
-  }
 
   return (
     <Staticpage>
-      {/* Modal */}
-      {showModal && (
-        <div className="fixed inset-0 flex  items-center justify-center  bg-opacity-75 z-50">
-          <div className="bg-white w-full md:w-1/2 p-8 rounded-lg shadow-lg">
-            <h2 className="text-xl font-bold mb-4 text-gray-700">
-              Important Notice!
-            </h2>
-            <p className="text-gray-700">
-              Please be advised that all deposits or payments should be directed
-              solely to the company's designated account or Bitcoin wallet
-              address, identified as{' '}
-              <i className="text-gray-700 font-bold">
-                bc1qqtel7mt50d209k4up3rnfwa2rhxaat7df5ryee
-              </i>
-              . Kindly refrain from making any payments or deposits to
-              individual account managers. It is important to note that the
-              company will not assume responsibility for any losses incurred as
-              a result of payments made to unauthorized account managers. Your
-              cooperation and understanding in this matter are greatly
-              appreciated.
-            </p>
-
-            <button
-              onClick={closeModal}
-              className="mt-4 bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline"
-            >
-              OK
-            </button>
-          </div>
-        </div>
-      )}
       {/* Hero section */}
       <section className="w-full h-[75vh] md:h-[60vh] lg:h-auto lg:pt-24 bg-[url('/assets/bg-about-header.jpg')] bg-cover px-4">
         <div className="flex relative overflow-hidden items-center w-full max-w-6xl mx-auto h-full">
@@ -287,20 +251,15 @@ const Component = () => {
 }
 
 const page = () => {
-  const currentDate = new Date()
-  const [showTawkMessenger] = useState(currentDate < new Date('2024-07-24'))
-
   return (
     <>
       <Component />
       <div className="w-full fixed left-0 bottom-0">
         <PricesIframe />
-        {showTawkMessenger && (
-          <TawkMessengerReact
-            propertyId="66292b29a0c6737bd12fd5c7"
-            widgetId="1hs8d175u"
-          />
-        )}
+        <TawkMessengerReact
+          propertyId="66292b29a0c6737bd12fd5c7"
+          widgetId="1hs8d175u"
+        />
       </div>
     </>
   )

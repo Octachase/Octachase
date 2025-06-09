@@ -3,28 +3,28 @@
 		"percentage": "30",
 		"days": "7",
 		"name": "Starter",
-		"min": 500,
-		"max": 1499
+		"min": 5000,
+		"max": 24000
 	},
 	{
 		"percentage": "55",
 		"days": "6",
 		"name": "Silver",
-		"min": 1500,
-		"max": 4499
+		"min": 25000,
+		"max": 49000
 	},
 	{
 		"percentage": "69",
 		"days": "5",
 		"name": "Gold",
-		"min": 4500,
-		"max": 9999
+		"min": 50000,
+		"max": 99000
 	},
 	{
 		"percentage": "123.5",
 		"days": "3",
 		"name": "Platinum",
-		"min": 10000,
-		"max": 14999
+		"min": 150000,
+		"max": 1000000
 	}
 ]

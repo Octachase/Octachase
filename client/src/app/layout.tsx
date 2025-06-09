@@ -7,6 +7,7 @@ import './globals.css'
 
 import InitialDispatch from '@/components/molecules/InitialDispatch'
 import Head from 'next/head'
+import FloatingTransaction from '@/components/atoms/FloatingTransaction'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -33,7 +34,10 @@ export default function RootLayout({
         />
       </Head> */}
       <body className={inter.className}>
-        <InitialDispatch>{children}</InitialDispatch>
+        <InitialDispatch>
+          <FloatingTransaction />
+          {children}
+        </InitialDispatch>
       </body>
     </html>
   )

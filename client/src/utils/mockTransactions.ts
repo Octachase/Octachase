@@ -1,0 +1,95 @@
+export const transactions = Array.from({ length: 100 }).map((_, i) => {
+  const countries = [
+    'United States',
+    'China',
+    'Germany',
+    'Japan',
+    'India',
+    'United Kingdom',
+    'France',
+    'South Korea',
+    'Italy',
+    'Brazil',
+    'Canada',
+    'Russia',
+    'Mexico',
+    'Netherlands',
+    'Saudi Arabia',
+    'Singapore',
+    'Australia',
+    'Switzerland',
+    'Turkey',
+    'United Arab Emirates',
+    'South Africa',
+    'Israel',
+    'Vietnam',
+    'Indonesia',
+    'Thailand',
+    'Malaysia',
+    'Philippines',
+    'Bangladesh',
+    'Argentina',
+    'Chile',
+    'Colombia',
+    'Nigeria',
+    'Kenya',
+    'Egypt',
+    'Pakistan',
+    'Poland',
+    'Czech Republic',
+    'Romania',
+    'Belgium',
+    'Sweden',
+    'Norway',
+    'Denmark',
+    'Finland',
+    'Austria',
+    'Ireland',
+    'New Zealand',
+    'Portugal',
+    'Greece',
+    'Ukraine',
+    'Morocco',
+    'Peru',
+    'Venezuela',
+    'Kazakhstan',
+    'Qatar',
+    'Kuwait',
+    'Oman',
+    'Hong Kong',
+    'Taiwan',
+    'Luxembourg',
+    'Slovakia',
+    'Hungary',
+    'Croatia',
+    'Slovenia',
+    'Serbia',
+    'Bulgaria',
+    'Georgia',
+    'Estonia',
+    'Latvia',
+    'Lithuania',
+    'Iraq',
+    'Jordan',
+    'Lebanon',
+    'Tunisia',
+  ]
+
+  const actions = ['Deposited', 'Withdrew']
+  const randomCountry = countries[Math.floor(Math.random() * countries.length)]
+  const randomAction = actions[Math.floor(Math.random() * actions.length)]
+
+  const minAmount = randomAction === 'Deposited' ? 500 : 100
+  const maxAmount = randomAction === 'Deposited' ? 20000 : 10000
+
+  const amount = (Math.random() * (maxAmount - minAmount) + minAmount).toFixed(
+    2
+  )
+
+  return {
+    id: i,
+    country: randomCountry,
+    action: randomAction,
+    amount: `$${Number(amount).toLocaleString()}`,
+  }
+})

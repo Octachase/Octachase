@@ -195,7 +195,6 @@ const Component = () => {
         </div>
       </section>
 
-      {/* testimonials */}
       <Testimonials />
 
       {/* We accept */}

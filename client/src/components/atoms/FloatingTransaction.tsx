@@ -14,8 +14,7 @@ export default function FloatingTransaction() {
       const delayBeforeShow = initial
         ? 10000
         : Math.floor(Math.random() * 8000) + 5000 // 5s–13s
-      const visibleDuration =
-        Math.floor(Math.random() * (200000 - 5000 + 1)) + 5000 // 4s–7s
+      const visibleDuration = Math.floor(Math.random() * 4000) + 3000 // 3s–7s
 
       timeoutId = setTimeout(() => {
         setVisible(true) // show popup

@@ -18,6 +18,7 @@ import Testimonials from '@/components/molecules/Testimonials'
 import NonProfit from '@/components/pages/NonProfit/MemberBenefitsSection'
 import HeroSection from '@/components/atoms/HeroSection'
 import FloatingTransaction from '@/components/atoms/FloatingTransaction'
+import GoalSection from '@/components/pages/GoalSection'
 
 const Component = () => {
   const user = useSelector(useUserSlice)
@@ -181,6 +182,8 @@ const Component = () => {
         </div>
       </section>
       <NonProfit />
+
+      <GoalSection />
 
       {/* trading account types */}
       <section className="flex flex-col py-[50px] px-4 lg:px-[30px] ">

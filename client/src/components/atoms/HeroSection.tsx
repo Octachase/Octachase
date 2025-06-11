@@ -48,16 +48,29 @@ const HeroSection = () => {
   const user = useSelector(useUserSlice)
 
   return (
-    <section className="w-full h-[75vh] md:h-[60vh] lg:h-auto lg:pt-24 bg-[url('/assets/bg-about-header.jpg')] bg-cover bg-center px-4 overflow-hidden">
-      <div className="flex relative items-center w-full max-w-6xl mx-auto h-full">
-        {/* Animated background elements */}
-        <motion.div
-          className="absolute inset-0 bg-black/10"
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 0.1 }}
-          transition={{ duration: 1.5 }}
-        />
+    <section className="w-full h-[75vh] md:h-[60vh] lg:h-auto lg:pt-24 px-4 overflow-hidden relative">
+      {/* Video background */}
+      <div className="absolute inset-0 w-full h-full overflow-hidden z-0">
+        <video
+          autoPlay
+          loop
+          muted
+          playsInline
+          className="w-full h-full object-cover"
+        >
+          <source src="/assets/media/hero-video.mp4" type="video/mp4" />
+          {/* Fallback image if video doesn't load */}
+          <Image
+            src="/assets/bg-about-header.jpg"
+            fill
+            alt="Background fallback"
+            className="object-cover"
+          />
+        </video>
+        <div className="absolute inset-0 bg-black/30"></div>
+      </div>
 
+      <div className="flex relative items-center w-full max-w-6xl mx-auto h-full ">
         {/* Floating circles decoration */}
         <motion.div
           className="absolute top-1/4 left-1/4 w-16 h-16 rounded-full bg-[#52afee] opacity-20 blur-xl"
@@ -122,7 +135,7 @@ const HeroSection = () => {
               <PrimaryButton
                 text={'Learn More'}
                 href={'/about'}
-                sx="!bg-transparent border-[1px] rounded-[10px] w-full md:w-96 hover:scale-105 transition-transform"
+                sx="!bg-transparent border-[#52afee] border-[2px] rounded-[10px] w-full md:w-96 hover:scale-105 transition-transform"
               />
             </motion.div>
           )}

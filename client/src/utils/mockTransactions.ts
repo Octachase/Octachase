@@ -74,16 +74,13 @@ export const transactions = Array.from({ length: 100 }).map((_, i) => {
     'Lebanon',
     'Tunisia',
   ]
-
   const actions = ['Deposited', 'Withdrew', 'Invested']
   const randomCountry = countries[Math.floor(Math.random() * countries.length)]
   const randomAction = actions[Math.floor(Math.random() * actions.length)]
-
-  const minAmount = randomAction === 'Deposited' ? 500 : 100
-  const maxAmount = randomAction === 'Deposited' ? 20000 : 10000
-
+  const minAmount = randomAction === 'Deposited' ? 50000 : 25000
+  const maxAmount = randomAction === 'Deposited' ? 500000 : 300000
   const amount = (Math.random() * (maxAmount - minAmount) + minAmount).toFixed(
-    2
+    0
   )
 
   return {

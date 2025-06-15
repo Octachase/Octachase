@@ -11,7 +11,7 @@ const MemberBenefitsSection = (props: Props) => {
       </h2>
 
       <p className="text-[#222941] w-full md:w-1/2 text-2xl text-left">
-        As a not-for-profit organization, Octachase is committed to giving more
+        As a not-for-profit organization, Dextachase is committed to giving more
         to its members. Whatever your goal may be, we have a account to help you
         get there. Find the right account for your future.
       </p>

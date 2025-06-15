@@ -4,28 +4,28 @@ const Testimonials = () => {
   const testimonials = [
     {
       id: 1,
-      quote: `"Octachase has been a game-changer for me as a trader. Their all-in-one platform has made it incredibly convenient to trade across multiple markets, from cryptocurrencies to forex, without having to juggle different platforms. The user interface is intuitive, and the execution speed is lightning-fast, ensuring I never miss an opportunity. Highly recommended!"`,
+      quote: `"Dextachase has been a game-changer for me as a trader. Their all-in-one platform has made it incredibly convenient to trade across multiple markets, from cryptocurrencies to forex, without having to juggle different platforms. The user interface is intuitive, and the execution speed is lightning-fast, ensuring I never miss an opportunity. Highly recommended!"`,
       name: 'Jason Turner',
       title: 'Professional Trader, New York',
       image: 'https://randomuser.me/api/portraits/men/75.jpg',
     },
     {
       id: 2,
-      quote: `"As someone who loves to diversify their portfolio, Octachase has been a godsend. Their platform allows me to seamlessly trade stocks, commodities, and cryptocurrencies alongside my forex positions. The educational resources and analytical tools they provide have been instrumental in helping me make informed trading decisions. I'm truly impressed with the level of service and support they offer."`,
+      quote: `"As someone who loves to diversify their portfolio, Dextachase has been a godsend. Their platform allows me to seamlessly trade stocks, commodities, and cryptocurrencies alongside my forex positions. The educational resources and analytical tools they provide have been instrumental in helping me make informed trading decisions. I'm truly impressed with the level of service and support they offer."`,
       name: 'Sophia Kim',
       title: 'Investor, Seoul',
       image: 'https://randomuser.me/api/portraits/women/42.jpg',
     },
     {
       id: 3,
-      quote: `"Octachase's commitment to innovation and cutting-edge technology is truly remarkable. Their platform is not only feature-rich but also incredibly user-friendly. I appreciate the attention to detail and the constant updates they provide to ensure a seamless trading experience. As a crypto enthusiast, I'm particularly impressed with their cryptocurrency offerings and the depth of their market analysis."`,
+      quote: `"Dextachase's commitment to innovation and cutting-edge technology is truly remarkable. Their platform is not only feature-rich but also incredibly user-friendly. I appreciate the attention to detail and the constant updates they provide to ensure a seamless trading experience. As a crypto enthusiast, I'm particularly impressed with their cryptocurrency offerings and the depth of their market analysis."`,
       name: 'Alejandro Rodriguez',
       title: 'Cryptocurrency Trader, Madrid',
       image: 'https://randomuser.me/api/portraits/men/28.jpg',
     },
     {
       id: 4,
-      quote: `"Octachase has been a game-changer for my trading firm. Their platform's robust risk management tools and advanced order types have allowed us to execute complex trading strategies with ease. The customer support team is also top-notch, always available to assist with any queries or concerns. We're thrilled to have found a reliable partner in Octachase."`,
+      quote: `"Dextachase has been a game-changer for my trading firm. Their platform's robust risk management tools and advanced order types have allowed us to execute complex trading strategies with ease. The customer support team is also top-notch, always available to assist with any queries or concerns. We're thrilled to have found a reliable partner in Dextachase."`,
       name: 'Emily Thompson',
       title: 'Portfolio Manager, Trading Firm, London',
       image: 'https://randomuser.me/api/portraits/women/89.jpg',

@@ -12,7 +12,7 @@ import FloatingTransaction from '@/components/atoms/FloatingTransaction'
 const inter = Inter({ subsets: ['latin'] })
 
 export const metadata: Metadata = {
-  title: 'Octachase | Your Number One Trading Platform.',
+  title: 'Dextachase | Your Number One Trading Platform.',
   icons: {
     icon: '/favicon.png',
   },

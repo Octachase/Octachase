@@ -1,52 +1,54 @@
-import React, { useRef, useState, useEffect } from "react";
-import { ToastContainer, toast } from "react-toastify";
-import { useRouter } from "next/navigation";
+import React, { useRef, useState, useEffect } from 'react'
+import { ToastContainer, toast } from 'react-toastify'
+import { useRouter } from 'next/navigation'
 
-import copyToClipboard from "@/utils/copyToClipboard";
-import useSelectedPropertiesFromHookForm from "@/hooks/useSelectedValuesFromHooks";
-import { usePostANewDepositProofMutation } from "@/apis/transactionsApi";
-import { depositSchema } from "@/libs/hookform";
+import copyToClipboard from '@/utils/copyToClipboard'
+import useSelectedPropertiesFromHookForm from '@/hooks/useSelectedValuesFromHooks'
+import { usePostANewDepositProofMutation } from '@/apis/transactionsApi'
+import { depositSchema } from '@/libs/hookform'
 
-import PrimaryButton from "@/components/atoms/PrimaryButton";
-import useCreateErrorFromApiRequest from "@/hooks/useCreateErrorApiRequest";
+import PrimaryButton from '@/components/atoms/PrimaryButton'
+import useCreateErrorFromApiRequest from '@/hooks/useCreateErrorApiRequest'
 
 const Deposit = () => {
-	const { handleSubmit, register, reset } = useSelectedPropertiesFromHookForm(depositSchema);
-	const [postADepositProof, { data, error, isLoading }] = usePostANewDepositProofMutation();
-	const [copied, setCopied] = useState(false);
-	const imageRef = useRef<null | HTMLInputElement>(null);
-	const router = useRouter();
-	const copyText = () => {
-		copyToClipboard("bc1qqtel7mt50d209k4up3rnfwa2rhxaat7df5ryee");
-		setCopied(true);
-		setTimeout(() => {
-			setCopied(false);
-		}, 2000);
-	};
+  const { handleSubmit, register, reset } =
+    useSelectedPropertiesFromHookForm(depositSchema)
+  const [postADepositProof, { data, error, isLoading }] =
+    usePostANewDepositProofMutation()
+  const [copied, setCopied] = useState(false)
+  const imageRef = useRef<null | HTMLInputElement>(null)
+  const router = useRouter()
+  const copyText = () => {
+    copyToClipboard('bc1qqtel7mt50d209k4up3rnfwa2rhxaat7df5ryee')
+    setCopied(true)
+    setTimeout(() => {
+      setCopied(false)
+    }, 2000)
+  }
 
-	const addDeposit = (data: any) => {
-		const { amount, txnId } = data;
-		const file = imageRef?.current?.files ? imageRef?.current?.files[0] : null;
-		if (!file) {
-			toast.error("Please upload a receipt of confirmation");
-			return;
-		}
+  const addDeposit = (data: any) => {
+    const { amount, txnId } = data
+    const file = imageRef?.current?.files ? imageRef?.current?.files[0] : null
+    if (!file) {
+      toast.error('Please upload a receipt of confirmation')
+      return
+    }
 
-		postADepositProof({ amount, txnId, file });
-	};
+    postADepositProof({ amount, txnId, file })
+  }
 
-	useEffect(() => {
-		if (!data) return;
-		toast.success(data.message, { autoClose: 1500 });
-		setTimeout(() => {
-			router.push("/dashboard/transactions");
-		}, 1500);
-		reset();
-		if (imageRef?.current?.value) imageRef.current.value = "";
-	}, [data]);
+  useEffect(() => {
+    if (!data) return
+    toast.success(data.message, { autoClose: 1500 })
+    setTimeout(() => {
+      router.push('/dashboard/transactions')
+    }, 1500)
+    reset()
+    if (imageRef?.current?.value) imageRef.current.value = ''
+  }, [data])
 
-	useCreateErrorFromApiRequest(error);
-	return (
+  useCreateErrorFromApiRequest(error)
+  return (
     <div className="w-full ">
       <div className="flex flex-col items-center justify-center">
         <p className="w-full h-12 bg-[#D1ECF1] text-sm flex items-center justify-center text-[#0c5460] font-bold">
@@ -56,7 +58,7 @@ const Deposit = () => {
           </span>{' '}
         </p>
         <h3 className="text-xl md:text-2xl font-bold mt-4">MAKE A DEPOSIT</h3>
-        <p className="text-sm font-bold mt-3">Octachase Official Wallet</p>
+        <p className="text-sm font-bold mt-3">Dextachase Official Wallet</p>
         <div className="flex flex-col md:flex-row items-stretch ">
           <p className="bg-white text-black text-sm font-bold px-2 py-[2px]">
             bc1qtgyaah8nwz8j2rav9kp26trjkj2knsdnnes52d
@@ -151,6 +153,6 @@ const Deposit = () => {
       <ToastContainer />
     </div>
   )
-};
+}
 
-export default Deposit;
+export default Deposit

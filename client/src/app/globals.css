@@ -1,0 +1,48 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Libre+Franklin:wght@400;500;600;700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+* {
+	@apply font-inter text-white border-white border-opacity-10;
+}
+
+.Toastify .Toastify__toast-container .Toastify__toast .Toastify__toast-body div {
+	@apply !text-black text-sm;
+}
+
+.details tr,
+.details td,
+.details th {
+	@apply border-[1px] px-4 py-2 min-w-[200px];
+}
+
+::-webkit-scrollbar-thumb {
+	@apply !bg-sec;
+}
+
+@media screen and (min-width: 768px) {
+	::selection {
+		@apply bg-sec !text-white opacity-100;
+	}
+	::-webkit-scrollbar {
+		width: 8px;
+	}
+
+	::-webkit-scrollbar-track {
+		@apply bg-[#0F172A] !w-[1px] md:w-[10px];
+	}
+
+	::-webkit-scrollbar-thumb {
+		@apply bg-sec rounded-[20px];
+	}
+}
+
+iframe {
+	@apply !h-full !overflow-hidden;
+}
+
+iframe ::-webkit-scrollbar {
+	display: none;
+}

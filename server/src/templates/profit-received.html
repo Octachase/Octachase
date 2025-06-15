@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<title>You received a new deposit proof</title>
+		<style>
+			body {
+				font-family: Arial, sans-serif;
+				margin: 0;
+				padding: 0;
+				background-color: #f4f4f4;
+			}
+
+			.container {
+				max-width: 600px;
+				margin: 20px auto;
+				padding: 20px;
+				background-color: #fff;
+				box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+			}
+
+			h2 {
+				color: #333;
+			}
+
+			p {
+				color: #666;
+			}
+
+			.order-details {
+				margin-top: 20px;
+				border-collapse: collapse;
+				width: 100%;
+			}
+
+			.order-details th,
+			.order-details td {
+				border: 1px solid #ddd;
+				padding: 10px;
+				text-align: left;
+			}
+
+			.order-details th {
+				background-color: #f2f2f2;
+			}
+
+			.contact-seller {
+				background-color: #17a2b8;
+				color: white;
+				text-decoration: none;
+				padding: 10px 20px;
+				display: inline-block;
+				border-radius: 5px;
+				margin-top: 20px;
+			}
+
+			.contact-seller:hover {
+				background-color: #17a2b89f;
+			}
+		</style>
+	</head>
+	<body>
+		<div class="container">
+			<h2>Profit received from trade</h2>
+			<p>Hello {{username}},</p>
+
+			<p>
+				We are thrilled to inform you that you've received a profit of {{amount}} from your recent trades on our platform! Your success in navigating the markets is truly commendable, and we
+				wanted to take a moment to express our sincere gratitude for choosing our platform for your trading journey.
+			</p>
+
+			<p>
+				In the spirit of your recent triumph, we encourage you to continue exploring trading opportunities on our platform. Your insights and dedication contribute significantly to the dynamic
+				trading environment we aim to foster.
+				<br /><br />
+				Here at Octachase, we value our users, and your satisfaction is our top priority. We appreciate your trust and confidence in our platform. As you embark on more trading endeavors, rest
+				assured that we are committed to providing you with a secure, efficient, and user-friendly experience.
+
+				<br /><br />If you have any questions, concerns, or if there's anything we can assist you with, please feel free to reach out to our customer support team using {{support}}.
+			</p>
+
+			<p>Best regards, <br />Octachase Trade Center</p>
+		</div>
+	</body>
+</html>

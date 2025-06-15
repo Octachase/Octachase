@@ -6,8 +6,7 @@ import Link from 'next/link'
 import { useSelector } from 'react-redux'
 
 import { useUserSlice } from '@/slices/user.slice'
-
-import LogoImage from '@/assets/logo.svg'
+import Logo from '../atoms/Logo'
 
 const Footer = () => {
   const user = useSelector(useUserSlice)
@@ -15,9 +14,8 @@ const Footer = () => {
     <footer className=" bg-cover bg-fixed lg:h-[calc(100vh-88px)] px-4 lg:px-[80px] bg-[url('/assets/footer.jpg')] pb-[90px] md:pb-0">
       {/* logo row */}
       <div className="flex justify-between pt-[50px] pb-[30px] border-b-[1px] border-neutral-600">
-        <div className="w-[134px] h-[59px] relative">
-          <Image src={LogoImage} fill alt="Logo Image" />
-        </div>
+        <Logo />
+
         <div className="w-[104px] h-[56px] mr-[46px] object-cover relative">
           <Image src="/assets/ssl.png" fill alt="Logo Image" />
         </div>

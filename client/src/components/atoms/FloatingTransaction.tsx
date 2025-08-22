@@ -36,7 +36,7 @@ export default function FloatingTransaction() {
 
   return (
     <div
-      className={`fixed z-[90] bottom-[45%] right-[50px] bg-white px-[27px] py-[10px] rounded-[7px] shadow-[0px_5px_13px_0px_rgba(0,0,0,0.3)] transition-opacity duration-300 ${
+      className={`fixed z-[9999] bottom-[45%] right-[50px] bg-white px-[27px] py-[10px] rounded-[7px] shadow-[0px_5px_13px_0px_rgba(0,0,0,0.3)] transition-opacity duration-300 ${
         visible ? 'opacity-100' : 'opacity-0 pointer-events-none'
       }`}
     >

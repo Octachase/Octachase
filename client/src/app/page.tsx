@@ -343,7 +343,7 @@ const page = () => {
   return (
     <>
       <Component />
-      <div className="animate__animated animate__slideInUp animate__delay-1s">
+      <div>
         <FloatingTransaction />
       </div>
       <div className="w-full fixed left-0 bottom-0 animate__animated animate__fadeInUp animate__delay-2s">

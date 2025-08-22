@@ -11,9 +11,7 @@ import Staticpage from '@/components/layouts/Staticpage'
 import PrimaryButton from '@/components/atoms/PrimaryButton'
 import PricesIframe from '@/components/atoms/PricesIframe'
 import AccountType from '@/components/molecules/AccountType'
-
-//@ts-ignore
-import TawkMessengerReact from '@tawk.to/tawk-messenger-react'
+import TawkMessenger from '@/components/atoms/TawkMessenger'
 import Testimonials from '@/components/molecules/Testimonials'
 import NonProfit from '@/components/pages/NonProfit/MemberBenefitsSection'
 import HeroSection from '@/components/atoms/HeroSection'
@@ -350,10 +348,7 @@ const page = () => {
       </div>
       <div className="w-full fixed left-0 bottom-0 animate__animated animate__fadeInUp animate__delay-2s">
         <PricesIframe />
-        <TawkMessengerReact
-          propertyId="66292b29a0c6737bd12fd5c7"
-          widgetId="1hs8d175u"
-        />
+        <TawkMessenger />
       </div>
     </>
   )

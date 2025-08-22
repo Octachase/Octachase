@@ -1,5 +1,5 @@
 import { createApi, fetchBaseQuery } from '@reduxjs/toolkit/query/react'
-import { createAuthorizationHeader } from '@/utils/cookies';
+import { createAuthorizationHeader } from '@/utils/cookies'
 
 const authApi = createApi({
   reducerPath: 'authApi',
@@ -10,67 +10,87 @@ const authApi = createApi({
     },
   }),
   endpoints: (builder) => ({
-    registerUserRequest: builder.mutation<{ success: boolean; message: string }, { email: string; password: string; firstname: string; lastname: string; }>({
+    registerUserRequest: builder.mutation<
+      { success: boolean; message: string },
+      {
+        email: string
+        password: string
+        firstname: string
+        lastname: string
+      }
+    >({
       query: ({ email, password, firstname, lastname }) => ({
         method: 'POST',
         url: '/register',
-        body: { email, password, firstname, lastname }
+        body: { email, password, firstname, lastname },
       }),
-
     }),
-    verifyUserEmailRequest: builder.mutation<{ success: boolean, message: string }, { token: string }>({
+    verifyUserEmailRequest: builder.mutation<
+      { success: boolean; message: string },
+      { token: string }
+    >({
       query: ({ token }) => ({
         method: 'PUT',
         url: '/verify-account',
-        body: { token }
+        body: { token },
       }),
-
     }),
     resendEmailRequest: builder.mutation({
-      query: ({ email, mode }: { email: string, mode: string }) => ({
+      query: ({ email, mode }: { email: string; mode: string }) => ({
         method: 'POST',
         url: '/resendEmail',
-        body: { email, mode }
-      })
+        body: { email, mode },
+      }),
     }),
-    loginRequest: builder.mutation<{ token: string, user: any }, { email: string; password: string }>({
+    loginRequest: builder.mutation<
+      { token: string; user: any },
+      { email: string; password: string }
+    >({
       query: ({ email, password }) => ({
         url: '/login',
         method: 'POST',
-        body: { email, password }
+        body: { email, password },
       }),
     }),
     logoutRequest: builder.query<{}, void>({
-      query: () => '/logout'
+      query: () => '/logout',
     }),
     changePassword: builder.mutation({
       query: () => ({
-        url: '/changePassword'
-      })
+        url: '/changePassword',
+      }),
     }),
-    requestPasswordResetRequest: builder.mutation<{ success: boolean, message: string }, { email: string }>({
+    requestPasswordResetRequest: builder.mutation<
+      { success: boolean; message: string },
+      { email: string }
+    >({
       query: ({ email }) => ({
         method: 'POST',
         url: '/reset-password',
-        body: { email }
-      })
+        body: { email },
+      }),
     }),
-    setPasswordRequest: builder.mutation<{ success: boolean, message: string }, { token: string; newPassword: string }>({
+    setPasswordRequest: builder.mutation<
+      { success: boolean; message: string },
+      { token: string; newPassword: string }
+    >({
       query: ({ token, newPassword }) => ({
         method: 'PUT',
         url: '/set-password',
-        body: { token, newPassword }
-      })
-    }),
-    updateUserPasswordRequest: builder.mutation<{ message: string, success: boolean }, { newpassword: string; oldpassword: string }>({
-      query: ({ newpassword, oldpassword }) => ({
-        url: "/change-password",
-        method: 'PUT',
-        body: { newPassword: newpassword, currentPassword: oldpassword }
+        body: { token, newPassword },
       }),
     }),
-
-  })
+    updateUserPasswordRequest: builder.mutation<
+      { message: string; success: boolean },
+      { newpassword: string; oldpassword: string }
+    >({
+      query: ({ newpassword, oldpassword }) => ({
+        url: '/change-password',
+        method: 'PUT',
+        body: { newPassword: newpassword, currentPassword: oldpassword },
+      }),
+    }),
+  }),
 })
 
 export const {
@@ -81,7 +101,7 @@ export const {
   useLazyLogoutRequestQuery,
   useRequestPasswordResetRequestMutation,
   useSetPasswordRequestMutation,
-  useUpdateUserPasswordRequestMutation
+  useUpdateUserPasswordRequestMutation,
 } = authApi
 
 export default authApi

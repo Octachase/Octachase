@@ -1,6 +1,6 @@
 'use client'
 
-import React, { ReactNode, useEffect } from 'react'
+import React, { ReactNode, useEffect, useState } from 'react'
 import makeStore from '@/store'
 import { Provider, useDispatch, useSelector } from 'react-redux'
 
@@ -11,14 +11,24 @@ const store: any = makeStore()
 
 // This is where the fetch is made
 const Component = ({ children }: { children: ReactNode }) => {
+  const [mounted, setMounted] = useState(false)
   const { data, isLoading, error } = useFetchLoggedInUserRequestQuery()
   const dispatch = useDispatch()
   const user = useSelector(useUserSlice)
 
   useEffect(() => {
-    if (!data) return
+    setMounted(true)
+  }, [])
+
+  useEffect(() => {
+    if (!data || !mounted) return
     dispatch(setData(data))
-  }, [data])
+  }, [data, mounted])
+
+  // Don't render anything until client-side mounted to prevent hydration mismatch
+  if (!mounted) {
+    return <>{children}</>
+  }
 
   return (
     <>
